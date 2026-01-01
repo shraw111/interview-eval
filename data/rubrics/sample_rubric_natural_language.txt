@@ -1,0 +1,24 @@
+I need to evaluate a PM for promotion to Senior PM.
+
+The candidate should demonstrate strategic thinking - not just executing on roadmaps, but defining them. They should be able to think 12-18 months ahead and influence product direction.
+
+For execution, they need to show they can deliver complex initiatives consistently. Managing projects with multiple dependencies and showing strong project management.
+
+Stakeholder management is critical - they must be able to influence cross-functional teams, navigate conflicting priorities, and get executive buy-in.
+
+Product sense is important - making sound product decisions, showing user empathy, balancing user needs with business goals.
+
+Also evaluate their presentation skills - clean slides, logical flow, good storytelling.
+
+For the actual case study work, I want to see:
+- Clear problem statement with quantified impact
+- Solid opportunity sizing with TAM/SAM/SOM methodology
+- Research from customer, business, and technical perspectives
+- Good business analysis with ROI
+- Multiple alternatives considered with pros/cons
+- Clear decision framework for choosing solutions
+- Go-to-market thinking
+- Product vision and roadmap
+- Implementation planning
+
+Strategic thinking and stakeholder influence are must-haves for the promotion.

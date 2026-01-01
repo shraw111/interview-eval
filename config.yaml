@@ -1,0 +1,41 @@
+models:
+  primary_agent:
+    model_name: "gpt-4o"
+    max_tokens: 16000  # GPT-4o can handle higher without timeouts
+    temperature: 0.0
+
+  challenge_agent:
+    model_name: "gpt-4o"
+    max_tokens: 16000
+    temperature: 0.0
+
+  response_agent:
+    model_name: "gpt-4o"
+    max_tokens: 16000
+    temperature: 0.0
+
+  decision_agent:
+    model_name: "gpt-4o"
+    max_tokens: 16000
+    temperature: 0.0
+
+retry:
+  max_attempts: 3
+  backoff_factor: 2
+
+timeout:
+  per_node_seconds: 120
+  total_workflow_seconds: 500
+
+pricing:
+  # GPT-4o pricing per million tokens
+  input_cost_per_mtok: 2.5
+  output_cost_per_mtok: 10.0
+
+storage:
+  prompts_path: "data/prompts/versions.json"
+
+tracing:
+  enabled: true
+  project: "pm-evaluator-production"
+  sample_rate: 1.0

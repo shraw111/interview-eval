@@ -1,0 +1,36 @@
+CANDIDATE INFORMATION FOR TESTING
+==================================
+
+Copy and paste these values into the Streamlit form:
+
+**Name:**
+Sarah Chen
+
+**Current Level:**
+PM
+
+**Target Level:**
+Senior PM
+
+**Years at Current Level:**
+3
+
+**Level Expectations (what distinguishes Target from Current level):**
+Senior PMs must define strategy, not just execute on roadmap. They should influence product direction at the company level, align executive stakeholders proactively, and drive business outcomes (not just ship features). Senior PMs operate 12-18 months ahead and expand their scope beyond assigned areas. They develop other PMs and create leverage through their team.
+
+==================================
+
+INSTRUCTIONS FOR TESTING:
+1. Open http://localhost:8501
+2. Fill in the form with the values above
+3. Copy the rubric from sample_rubric.txt into the "Evaluation Criteria" field
+4. Copy the transcript from sample_transcript.txt into the "Interview Transcript" field
+5. Click "Run Evaluation"
+6. Wait ~2-3 minutes for the 3-agent evaluation to complete
+
+EXPECTED RESULT:
+- Primary agent should evaluate Sarah against the rubric criteria
+- Challenge agent should review and raise any concerns
+- Decision agent should provide final recommendation (likely RECOMMEND or STRONG RECOMMEND based on the strong examples)
+
+If you get errors, share them and I'll fix them immediately.

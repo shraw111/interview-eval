@@ -1,0 +1,143 @@
+[PRESENTATION BEGINS]
+
+Candidate: Good morning everyone. Thank you for the opportunity to present today. I'm going to walk you through my approach to solving the customer churn problem we've been experiencing in our B2B SaaS platform.
+
+[SLIDE 1: Problem Statement]
+
+Over the past 6 months, we've seen our annual churn rate increase from 8% to 14%. This represents approximately $2.3M in annual recurring revenue at risk. Through customer interviews and data analysis, I identified the root cause: customers don't achieve value within their first 90 days, leading to non-renewal.
+
+[SLIDE 2: Opportunity Sizing]
+
+Let me walk through the opportunity sizing. Our current ARR is $16.5M with 220 enterprise customers. At 14% churn, we lose $2.31M annually. Additionally, we're leaving $4.2M on the table in expansion revenue because churned customers would have grown 18% year-over-year based on cohort analysis.
+
+For the TAM calculation, I used a bottom-up approach: there are approximately 50,000 mid-market B2B companies in our target verticals. At an average contract value of $75K, that's a $3.75B TAM. Our SAM, focusing on companies with 200-2000 employees, is roughly $1.2B.
+
+I also ran scenarios - best case (reduce churn to 6%) saves $3.2M annually, worst case (churn increases to 18%) loses an additional $1.1M.
+
+[SLIDE 3: Research - Customer Lens]
+
+I conducted 25 customer interviews - 10 churned customers, 10 at-risk, and 5 power users. The pattern was clear: successful customers had three things in common: they completed onboarding within 30 days, they integrated our API with their existing tools, and they had executive sponsorship.
+
+Churned customers consistently mentioned feeling "lost after purchase" and "unclear on how to drive adoption within their org."
+
+[SLIDE 4: Research - Business Lens]
+
+From a business perspective, our unit economics are strong. CAC is $18K with an LTV of $135K at current churn rates. If we reduce churn to 8%, LTV increases to $202K, improving our LTV:CAC ratio from 7.5:1 to 11.2:1.
+
+The business model depends on land-and-expand. We lose expansion revenue when customers churn early. Current CLTV for customers who stay past year 1 is $245K vs $75K for those who churn.
+
+[SLIDE 5: Research - Capability Lens]
+
+On the capability side, I assessed our technical readiness. We have the infrastructure to support this - our data warehouse already tracks product usage events, we have a customer success platform (Gainsight), and our engineering team has capacity for 2 sprint cycles to build required features.
+
+The gap is in automation - currently our CS team manually reaches out to at-risk customers, which doesn't scale.
+
+[SLIDE 6: Current State]
+
+Here's our current onboarding process: after contract signing, customers receive a generic welcome email, followed by a 1-hour kickoff call with CSM 2 weeks later. Then they're left to self-serve for 60-90 days until the first QBR.
+
+This creates a 2-week "black hole" where customers struggle alone. Our data shows that 67% of eventual churners never complete their first integration during this period.
+
+[SLIDE 7: Alternatives Considered]
+
+I evaluated three alternatives:
+
+Option 1: Hire 5 more CSMs to provide white-glove onboarding. Pros: personalized, high-touch. Cons: expensive ($500K annually), doesn't scale, only reduces churn to 10%.
+
+Option 2: Build automated onboarding product with in-app guidance. Pros: scalable, one-time dev cost ($180K), targets root cause. Cons: 3-month build time, requires ongoing maintenance.
+
+Option 3: Partner with third-party onboarding platform (like Appcues). Pros: fast to implement (4 weeks), proven solution. Cons: ongoing subscription cost ($75K/year), less customization.
+
+[SLIDE 8: Selection Framework]
+
+I used a weighted decision matrix with four criteria: Impact on churn reduction (40% weight), scalability (25%), cost (20%), and time to value (15%).
+
+Option 2 scored highest at 8.4/10. While it has longer implementation time, it directly addresses the root cause with a scalable solution. The ROI calculation shows payback in 8 months.
+
+[SLIDE 9: Solution - Product Vision]
+
+My vision is a "guided onboarding experience" that acts as a digital CSM for the first 90 days. It includes:
+- Day 0: Automated setup wizard
+- Days 1-30: Interactive tutorials and integration guides
+- Days 31-60: Advanced feature discovery
+- Days 61-90: Adoption tracking and team enablement
+
+Long-term, this evolves into an intelligent assistant that predicts and prevents churn proactively.
+
+[SLIDE 10: Roadmap]
+
+Phase 1 (Months 1-3): Build core onboarding flows - setup wizard, first integration guide, basic analytics dashboard. Success metric: 80% of customers complete first integration within 14 days.
+
+Phase 2 (Months 4-6): Add advanced features - in-app tooltips, video tutorials, automated check-ins. Success metric: Reduce time-to-value from 45 days to 25 days.
+
+Phase 3 (Months 7-12): Intelligent recommendations, predictive churn scoring, expansion playbooks. Success metric: Churn rate reduced to 8%, NPS increased by 15 points.
+
+[SLIDE 11: Go-to-Market]
+
+For GTM, we'll roll out to new customers first as a beta, then expand to existing at-risk accounts. Positioning is "the fastest path to value" - not just onboarding, but ongoing success.
+
+No additional pricing - this is bundled into our core offering as a competitive differentiator. Our sales team will lead with this in demos: "You'll see value in 2 weeks, not 2 months."
+
+[SLIDE 12: Implementation Plan]
+
+Timeline: 12-week build, 4-week beta, phased rollout over 6 months.
+
+Key dependencies: Engineering team availability (confirmed), design resources (need to hire 1 product designer), customer success buy-in (they're supportive).
+
+Risks: Longer build time if we encounter technical debt in our event tracking system. Mitigation: I've already done a technical spike - 80% confident in timeline.
+
+Resources needed: 2 engineers for 3 months, 1 designer, 20% of my time for PM oversight. Total cost: $220K all-in.
+
+[SLIDE 13: Expected Impact]
+
+If successful, we'll see:
+- Churn reduction from 14% to 8% = $2.2M saved annually
+- Expansion revenue increase of $1.5M from better engagement
+- NPS improvement from 42 to 57
+- CAC payback period reduced from 13 months to 9 months
+
+Conservative ROI: $3.7M benefit over 18 months on $220K investment = 16.8x return.
+
+[PRESENTATION ENDS]
+
+[Q&A SESSION]
+
+Interviewer 1: How did you validate that onboarding is the root cause of churn versus other factors like product-market fit or competitive pressure?
+
+Candidate: Great question. I triangulated three data sources. First, churn analysis showed 78% of churns happened between months 3-8, not in year 2+, which ruled out competitive displacement. Second, in exit interviews, 19 of 23 churned customers cited "couldn't get our team to adopt it" not "found a better product." Third, I ran a cohort analysis - customers who completed 2+ integrations in first 30 days had only 3% churn rate vs 23% for those who didn't. This pointed directly to onboarding as the lever.
+
+Interviewer 2: Your TAM calculation seems aggressive. How confident are you in the 50,000 company figure?
+
+Candidate: You're right to push on that. I pulled that from ZoomInfo data filtered by industry codes, employee count, and revenue range. To validate, I cross-referenced with two other sources - a Gartner report on our market segment and LinkedIn company database. The numbers were within 15% of each other. I also ran a sensitivity analysis - even if I'm off by 50%, the SAM of $600M is still attractive. The key insight isn't the absolute TAM size, but that we're currently at only 1.4% penetration of our SAM, so there's plenty of room to grow even if my numbers are optimistic.
+
+Interviewer 3: What if customers still churn despite better onboarding? What's your backup plan?
+
+Candidate: Smart question. I built monitoring into the roadmap specifically for this. We'll track three leading indicators: integration completion rate, feature adoption depth, and user engagement frequency. If after 6 months we see these metrics improving but churn staying flat, that tells us the problem is elsewhere - maybe product gaps or pricing issues.
+
+In that scenario, I'd pivot to Phase 2 faster - the predictive churn model - to identify the actual drivers. I also kept Option 3 (the partnership approach) as a backup we could deploy in 4 weeks if we need to show faster results while building the long-term solution.
+
+Interviewer 1: How did you prioritize which features to include in Phase 1 vs Phase 2?
+
+Candidate: I used a combination of impact vs effort and the RICE framework. For Phase 1, I focused on the "must-haves" that directly unblock customers from first integration - setup wizard scored 9.2 on RICE because it impacts 100% of users, has high confidence of solving the problem, and is medium effort.
+
+Features like video tutorials scored lower on reach (only 40% of users watch videos) so they went to Phase 2. The litmus test was: "If we only shipped this one feature, would it materially reduce churn?" If yes, Phase 1. If it's nice-to-have but not critical, Phase 2.
+
+Interviewer 2: You mentioned needing to hire a product designer. Have you factored in the 6-8 week hiring timeline?
+
+Candidate: Yes, that's actually embedded in my timeline. I assumed we'd post the role in week 1, hire by week 6, and the designer would join in parallel with dev sprint 3. For sprints 1-2, I'd work with our existing design system and get contractor help for the wizard UI. It's not ideal, but it keeps us on track.
+
+If hiring takes longer, I have two mitigation options: either our current designer can carve out 10 hours/week for this project, or we use a design agency for a fixed 4-week engagement. Both options are in my budget buffer.
+
+Interviewer 3: Walk me through how you would measure success for this initiative.
+
+Candidate: I set up a tiered measurement framework.
+
+Leading indicators (weeks 2-8): Integration completion rate, time to first integration, active user percentage in first 30 days. Target: 75% complete first integration in under 14 days.
+
+Lagging indicators (months 3-6): 90-day engagement score, feature adoption breadth, CSM sentiment. Target: 65% of customers are "highly engaged" by day 60.
+
+Business outcomes (months 6-12): Churn rate, NPS, expansion revenue rate, and CAC payback period. Target: Churn drops to 10% by month 6, 8% by month 12.
+
+I'd review leading indicators weekly, lagging monthly, and business outcomes quarterly. If leading indicators aren't improving by week 8, I'd know to pivot before waiting for churn data.
+
+[END OF TRANSCRIPT]

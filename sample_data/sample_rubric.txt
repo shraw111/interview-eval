@@ -1,0 +1,88 @@
+EVALUATION RUBRIC FOR SENIOR PM PROMOTION
+
+This candidate is being evaluated for promotion from PM to Senior PM. The role of Senior PM requires operating at a higher level of strategic thinking, influence, and scope.
+
+**CRITICAL CRITERIA (Must meet all to be promotable):**
+
+1. **Strategic Vision & Product Sense** (CRITICAL - MUST SCORE 4+)
+   The candidate must demonstrate they can identify and drive strategic opportunities beyond their immediate scope. They should show evidence of:
+   - Identifying market opportunities that weren't on the roadmap
+   - Building compelling business cases with clear ROI
+   - Thinking 12-18 months ahead, not just quarterly
+   - Influencing company direction, not just executing on it
+   Look for: Concrete examples where they shaped strategy vs just executed it. Did they identify the opportunity or were they assigned it? Did they quantify the business impact?
+
+2. **Stakeholder Management & Executive Influence** (CRITICAL - MUST SCORE 4+)
+   Senior PMs must align executives and cross-functional leaders who have competing priorities. They should show:
+   - Proactive alignment of C-level stakeholders
+   - Data-driven influence (using metrics to drive decisions)
+   - Handling conflict and disagreement productively
+   - Building trust across the organization
+   Look for: Evidence of aligning VPs/C-suite, not just peer PMs or engineers. Did they facilitate decisions or just communicate them?
+
+**IMPORTANT CRITERIA:**
+
+3. **Execution Excellence** (Weight: 20%)
+   Strong track record of delivering complex, multi-quarter initiatives on time with high quality.
+   - Managing projects with 10+ people and multiple dependencies
+   - Handling ambiguity and adapting when plans change
+   - Risk management and mitigation
+   - Driving to outcomes, not just outputs
+   Look for: Scale and complexity of initiatives. How did they handle setbacks? What was the business impact?
+
+4. **Team Leadership & Development** (Weight: 15%)
+   Developing other PMs and elevating team capabilities.
+   - Mentoring junior PMs with specific, actionable feedback
+   - Creating leverage through others (not doing everything themselves)
+   - Building psychological safety and team culture
+   - Delivering hard feedback when needed
+   Look for: Concrete examples of developing people. Are they building future leaders?
+
+5. **Data-Driven Decision Making** (Weight: 15%)
+   Using metrics to validate assumptions and make product bets.
+   - Defining clear success metrics upfront
+   - Designing and running rigorous experiments
+   - Segmenting data to find insights (not just top-line metrics)
+   - Making decisions when data is incomplete
+   Look for: Do they just track metrics or actually use them to make decisions? Can they make judgment calls when data is unclear?
+
+6. **Communication & Influence** (Weight: 10%)
+   Articulating vision and rationale clearly to different audiences.
+   - Tailoring communication to audience (execs vs engineers vs customers)
+   - Storytelling with data
+   - Writing clear specs and strategy docs
+   Look for: Clarity of thought. Can they explain complex tradeoffs simply?
+
+**EVALUATION SCALE:**
+
+5 = Exceptional - Well above Senior PM level, shows Staff PM capabilities
+4 = Strong - Clearly meets Senior PM bar
+3 = Meets expectations - Solid PM level, not quite Senior yet
+2 = Below expectations - Gaps in core PM competencies
+1 = Significant concerns - Not meeting current level expectations
+
+**PROMOTION DECISION RULES:**
+
+- STRONG RECOMMEND: Both critical criteria scored 5, and overall weighted average ≥ 4.5
+- RECOMMEND: Both critical criteria scored 4+, and overall weighted average ≥ 4.0
+- BORDERLINE: One critical criterion scored 3, OR overall weighted average 3.5-3.9 (needs development plan)
+- DO NOT RECOMMEND: Any critical criterion scored ≤2, OR overall weighted average <3.5
+
+**RED FLAGS TO WATCH FOR:**
+
+- Taking credit for team's work (saying "I" when it was "we")
+- Describing activities instead of outcomes (what they did vs what impact it had)
+- Lack of strategic examples (only tactical execution)
+- No evidence of influence (only describing assigned work)
+- Poor judgment on tradeoffs
+- Unable to articulate failures or learnings
+
+**WHAT DISTINGUISHES SENIOR PM FROM PM:**
+
+PMs execute on strategy. Senior PMs define strategy.
+PMs align their immediate team. Senior PMs align executives.
+PMs deliver projects. Senior PMs drive business outcomes.
+PMs work in their scope. Senior PMs expand their scope.
+PMs follow the roadmap. Senior PMs shape the roadmap.
+
+The candidate must show clear evidence of operating at Senior PM level, not just potential to get there.

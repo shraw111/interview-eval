@@ -1,0 +1,169 @@
+metadata:
+  rubric_name: "PM to Senior PM Evaluation Rubric"
+  rubric_version: "1.0"
+  target_role: "Senior Product Manager"
+
+scoring_scale:
+  min: 0
+  max: 5
+  definitions:
+    5: "Exceptional - Beyond target level, would be strong at next level up"
+    4: "Target level ready - Demonstrates target capabilities clearly"
+    3: "Current level - Competent but not ready for target yet"
+    2: "Below current level - Significant gaps in current role"
+    1: "Poor - Major deficiencies"
+    0: "Not addressed or completely absent"
+
+recommendation_rules:
+  strong_recommend: "overall_score >= 4.0 AND all critical criteria >= 4"
+  recommend: "overall_score >= 3.5 AND max 1 critical failure"
+  borderline: "overall_score >= 3.0 OR max 2 critical failures"
+  do_not_recommend: "overall_score < 3.0 OR 3+ critical failures"
+
+categories:
+  - name: "Presentation Excellence"
+    weight: 30
+    criteria:
+      - id: "1"
+        name: "Presentation Quality"
+        weight: 10
+        definition: "Visual design, clarity, professional polish"
+        critical: false
+        look_for:
+          - "Clean, professional slides"
+          - "Consistent formatting and branding"
+          - "Appropriate use of visuals vs text"
+
+      - id: "2"
+        name: "Presentation Structure"
+        weight: 10
+        definition: "Logical flow, narrative coherence"
+        critical: false
+        look_for:
+          - "Clear beginning, middle, end"
+          - "Smooth transitions between sections"
+          - "Builds to conclusion logically"
+
+      - id: "3"
+        name: "Storytelling"
+        weight: 10
+        definition: "Engages audience, creates narrative arc"
+        critical: false
+        look_for:
+          - "Hooks audience early"
+          - "Maintains interest throughout"
+          - "Memorable key points"
+
+  - name: "Case Study Solution"
+    weight: 70
+    criteria:
+      - id: "4a"
+        name: "Problem Statement"
+        weight: 5
+        definition: "Clear articulation of problem to solve"
+        critical: false
+        look_for:
+          - "Specific, quantified problem"
+          - "Impact to stakeholders clear"
+          - "Root cause identified"
+
+      - id: "4b"
+        name: "Opportunity Sizing"
+        weight: 10
+        definition: "Market/business opportunity quantified with methodology"
+        critical: true
+        look_for:
+          - "TAM/SAM/SOM calculated"
+          - "Clear methodology shown"
+          - "Assumptions stated"
+          - "Scenarios/sensitivities considered"
+
+      - id: "4c"
+        name: "3 Lenses Research"
+        weight: 10
+        definition: "Customer, Business, Capability perspectives"
+        critical: true
+        look_for:
+          - "Customer needs validated"
+          - "Business model/unit economics clear"
+          - "Technical feasibility assessed"
+
+      - id: "4d"
+        name: "Current State Model"
+        weight: 8
+        definition: "As-is process/value chain mapped"
+        critical: false
+        look_for:
+          - "Current workflow documented"
+          - "Pain points identified"
+          - "Stakeholders mapped"
+
+      - id: "4e"
+        name: "Business Analysis"
+        weight: 8
+        definition: "Financial impact, ROI, business case"
+        critical: false
+        look_for:
+          - "Revenue/cost implications"
+          - "ROI calculation"
+          - "Payback period"
+
+      - id: "4f"
+        name: "Alternatives Considered"
+        weight: 10
+        definition: "Multiple solution options evaluated"
+        critical: true
+        look_for:
+          - "3+ alternatives identified"
+          - "Pros/cons of each"
+          - "Trade-offs explicit"
+
+      - id: "4g"
+        name: "Selection Criteria & Framework"
+        weight: 8
+        definition: "Systematic approach to choosing solution"
+        critical: true
+        look_for:
+          - "Clear decision criteria"
+          - "Weighted scorecard or framework"
+          - "Rationale for selection"
+
+      - id: "4h"
+        name: "Go-to-Market Approach"
+        weight: 8
+        definition: "Launch strategy, positioning, pricing"
+        critical: false
+        look_for:
+          - "Target segments defined"
+          - "Positioning clear"
+          - "Distribution channels identified"
+
+      - id: "4i"
+        name: "Product Vision & Roadmap"
+        weight: 10
+        definition: "Long-term vision with phased execution"
+        critical: true
+        look_for:
+          - "Vision beyond MVP"
+          - "Phases with rationale"
+          - "Success metrics per phase"
+
+      - id: "4j"
+        name: "Implementation Plan"
+        weight: 8
+        definition: "Execution roadmap with dependencies"
+        critical: false
+        look_for:
+          - "Timeline with milestones"
+          - "Resource requirements"
+          - "Risk mitigation"
+
+      - id: "5"
+        name: "Q&A Handling"
+        weight: 5
+        definition: "Responds to questions thoughtfully"
+        critical: false
+        look_for:
+          - "Direct answers"
+          - "Admits unknowns gracefully"
+          - "Defends decisions with evidence"

@@ -1,0 +1,134 @@
+CANDIDATE: Sarah Chen
+POSITION: Senior PM Promotion Interview
+DATE: December 2024
+INTERVIEWERS: VP Product, Director of Engineering
+
+==================================================
+STRATEGIC THINKING & VISION
+==================================================
+
+VP Product: Tell me about a time you identified a strategic opportunity that wasn't on the roadmap.
+
+Sarah: About 8 months ago, I noticed our enterprise customers were churning at 15% annually, but our data showed they loved the product. I dug into the data and found the issue wasn't product fit - it was that we were selling to the wrong buyer. We were selling to IT, but the actual users were in Operations.
+
+I proposed we pivot our GTM strategy to target Operations leaders instead. I built a business case showing we could increase ACV by 40% and reduce churn to under 8% by repositioning. The exec team was skeptical because it meant changing our entire sales playbook.
+
+I convinced them by running a 90-day pilot with 10 prospects. I personally sat in on sales calls, rewrote our pitch deck, and created new demo flows. We closed 7 of 10 deals at an average ACV of $85K versus our normal $60K. That pilot became our new standard approach.
+
+Director Eng: How did you get Engineering to support this pivot when they were focused on the existing roadmap?
+
+Sarah: I didn't ask them to change the roadmap initially. Instead, I identified 3 small changes we could make to the existing product that would unlock the Operations use case. I showed them the revenue projections and said we could validate the approach with minimal eng investment.
+
+Once we saw traction, I built a shared roadmap with Engineering where we allocated 60% to existing customers and 40% to the new segment. I made sure Engineering got credit for the revenue impact - I literally put their names in the board deck when we presented results.
+
+==================================================
+STAKEHOLDER MANAGEMENT & INFLUENCE
+==================================================
+
+VP Product: Tell me about a time you had to align stakeholders who had competing priorities.
+
+Sarah: Last quarter, we had a major conflict. Engineering wanted to invest 3 months in technical debt cleanup. Sales needed a new enterprise feature to close a $500K deal. Marketing wanted us to ship something flashy for our annual conference.
+
+I scheduled a 2-hour working session with all three teams. Instead of presenting my opinion, I had each team present their business case. Then I showed data: our NPS was dropping from 45 to 38 because of performance issues (supporting Eng's case), but we were also losing deals because we lacked SSO (supporting Sales).
+
+I proposed a hybrid approach: we'd do 6 weeks of performance optimization (the highest-impact tech debt), then 4 weeks on SSO, then 2 weeks on a demo-able feature for the conference. I showed the math: fixing performance would reduce churn by 3% ($200K saved), SSO would unlock the deal ($500K), and the conference feature would generate pipeline.
+
+Everyone agreed because I'd quantified the tradeoffs and given each team something. The key was I didn't decide unilaterally - I facilitated a data-driven discussion.
+
+VP Product: What happened when that plan inevitably slipped?
+
+Sarah: It did slip. Performance optimization took 8 weeks instead of 6. I immediately updated the stakeholders and re-negotiated. I proposed we de-scope the conference feature to just a prototype rather than a full build. Marketing wasn't happy, but I got them buy-in by offering to personally present the prototype at the conference and position it as "exclusive early access."
+
+The Sales deal closed 2 weeks late, but it closed. And our NPS recovered to 43 within a month of the performance fixes shipping.
+
+==================================================
+EXECUTION & DELIVERY
+==================================================
+
+Director Eng: Walk me through your most complex product initiative.
+
+Sarah: I led our platform migration from a monolith to microservices. This was a 9-month initiative involving 15 engineers, 3 product managers, and required zero downtime for customers.
+
+The complexity was we had to migrate while still shipping features. I broke it into 12 two-week sprints, each with a specific migration milestone and a customer-facing feature. For example, Sprint 3 was "Migrate auth service" + "Ship 2FA feature."
+
+I created a detailed project plan with dependencies mapped out. I ran weekly syncs with Engineering and bi-weekly stakeholder updates. I tracked 47 different risks and had mitigation plans for the top 10.
+
+The hardest part was Sprint 7 when we discovered our session management approach wouldn't work. We had to stop for 3 weeks to redesign. I immediately escalated to the exec team, explained the technical issue in business terms (this affects our ability to scale to 10K concurrent users), and got approval to pause feature work.
+
+We finished 2 weeks late but with zero customer-impacting bugs. I documented everything we learned and created a playbook for future migrations.
+
+Director Eng: How did you handle the ambiguity early on when you didn't know if microservices was the right call?
+
+Sarah: I didn't know. So I ran a 4-week spike with two engineers to validate the approach. We migrated one small service (notifications) end-to-end as a proof of concept. That spike uncovered 5 major risks we wouldn't have known about otherwise.
+
+Based on that learning, I updated the project plan and got exec approval for the full migration. The key was I didn't commit the team to 9 months of work until we'd validated the core assumptions.
+
+==================================================
+TEAM LEADERSHIP & COLLABORATION
+==================================================
+
+VP Product: How do you develop more junior PMs?
+
+Sarah: I have two APMs who report to me. With each of them, I created a personalized development plan based on their career goals.
+
+For Alex, who wants to move into growth PM, I had him shadow me on A/B test design for 2 months. Then I gave him ownership of our onboarding funnel. I reviewed his specs before they went to Eng, gave detailed feedback, and met weekly to coach him through stakeholder dynamics.
+
+For Maya, who's strong on execution but struggles with strategy, I have her present a strategic initiative to me every month. I coach her on how to think about market trends, competitive analysis, and business model implications.
+
+I also created a PM guild where all PMs (including me) present "lessons learned" from recent launches. This creates psychological safety to share failures and helps everyone learn.
+
+VP Product: Tell me about a time you had to deliver hard feedback to someone.
+
+Sarah: One of my engineers, Tom, was consistently missing deadlines and his code quality was declining. I noticed he was working late nights and seemed stressed.
+
+I scheduled a 1:1 and opened by asking how he was doing. Turns out his wife was dealing with a health issue and he was overwhelmed. I acknowledged that context, but I also had to be direct: "I understand what you're going through, and I want to support you. But I need to be honest - the missed deadlines are impacting the team and we need to address it."
+
+I offered two options: he could take a week off to deal with his family situation, or we could adjust his workload for the next month. He chose the adjusted workload. I worked with his manager to reassign some of his tasks and gave him lighter-weight projects.
+
+After a month, he was back to full productivity. The key was I balanced empathy with accountability - I showed I cared about him as a person, but I also didn't let the performance issue slide.
+
+==================================================
+DATA-DRIVEN DECISION MAKING
+==================================================
+
+VP Product: How do you use data to make product decisions?
+
+Sarah: I start every product decision by defining success metrics upfront. For our recent pricing change, I defined success as: increase revenue per customer by 25% while maintaining conversion rate above 12%.
+
+I ran an A/B test with 20% of traffic for 3 weeks. The new pricing increased revenue by 31% but dropped conversion to 10%. That's a net negative impact on overall revenue.
+
+I dug into the segments and found that enterprise customers converted at 15% (up from 12%) but SMBs dropped to 6% (down from 13%). I proposed tiered pricing: keep new pricing for enterprise, revert for SMBs.
+
+We shipped that approach and it increased overall revenue by 22% with conversion at 11.5%. The key was I didn't just look at top-line metrics - I segmented the data to understand the nuance.
+
+Director Eng: What do you do when the data is inconclusive?
+
+Sarah: Last month we tested a new feature and got p-value of 0.15 - not statistically significant. I had two options: run the test longer or make a judgment call.
+
+I looked at qualitative signals: 8 customers had specifically requested this feature, our main competitor had it, and the engineering cost was low (2 weeks). I decided to ship it even without statistical proof.
+
+I documented my reasoning: "Shipping because (1) customer demand is clear, (2) competitive parity, (3) low cost. Will monitor metrics for 30 days post-launch and roll back if engagement is below 20%."
+
+After 30 days, engagement was 28%. Sometimes you have to make decisions with incomplete data, but you need to be explicit about your assumptions and set clear criteria for reversing the decision.
+
+==================================================
+CLOSING QUESTIONS
+==================================================
+
+VP Product: Why do you want to be promoted to Senior PM?
+
+Sarah: I want to tackle bigger, more ambiguous problems. In my current role, I own a product area with clear boundaries. As a Senior PM, I'd define new product areas and set long-term strategy.
+
+I've shown I can do this - the enterprise GTM pivot I led wasn't in my scope, but I saw the opportunity and drove it. I want more of that strategic work.
+
+I also want to mentor more PMs. I love developing my two APMs and I want to expand that impact across the team.
+
+VP Product: What would you do differently in your first 90 days as a Senior PM?
+
+Sarah: First 30 days: I'd do a listening tour with top 20 customers, exec team, and cross-functional partners to understand where the company needs strategic bets.
+
+Days 30-60: I'd identify 2-3 strategic opportunities and build business cases with clear ROI. I'd socialize these with stakeholders to get feedback.
+
+Days 60-90: I'd commit to one strategic bet and start executing. I'd also establish a regular cadence with execs to share what I'm learning in the market.
+
+The key is I wouldn't come in with all the answers - I'd listen first, then act.
