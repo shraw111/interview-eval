@@ -80,15 +80,22 @@ def call_anthropic_claude(
             api_start = time.time()
             log_to_stderr(f"[API CALL START] Deployment: {deployment}, max_tokens: {max_tokens}, attempt: {attempt + 1}/{max_retries}")
 
-            response = client.chat.completions.create(
-                model=deployment,
-                max_tokens=max_tokens,
-                temperature=temperature,
-                messages=[
+            # Use max_completion_tokens for newer models (gpt-5.2-chat, etc.)
+            # Some models like gpt-5.2-chat only support temperature=1, so omit if 0.0
+            params = {
+                "model": deployment,
+                "max_completion_tokens": max_tokens,
+                "messages": [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_message}
                 ]
-            )
+            }
+
+            # Only add temperature if not 0.0 (some models don't support it)
+            if temperature != 0.0:
+                params["temperature"] = temperature
+
+            response = client.chat.completions.create(**params)
 
             api_duration = time.time() - api_start
             log_to_stderr(f"[API CALL SUCCESS] Duration: {api_duration:.2f}s")
