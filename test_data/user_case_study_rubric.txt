@@ -1,0 +1,68 @@
+CASE STUDY PRESENTATION EVALUATION RUBRIC
+
+This rubric evaluates the quality and completeness of a case study presentation.
+
+EVALUATION CRITERIA:
+
+1. **Presentation Quality** (Weight: 10%)
+   Is the presentation professional in the use of templates, colours, slide designs and presentable to a prospective client?
+
+2. **Presentation Structure** (Weight: 10%)
+   Is the presentation structured into logical sections with continuity and flow? Is the analysis structured around a framework (Porter's 5 Forces, BCG matrix, etc.)?
+
+3. **Story Telling Skills** (Weight: 10%)
+   Is there a clear beginning, middle and end to the case study analysis with a coherent story throughout the presentation?
+
+4. **Case Study Solution** (Weight: 60% total)
+
+   4a. **Criteria for Selection** (Weight: 5%)
+   Has the problem statement been clearly articulated?
+
+   4b. **Opportunity Sizing** (Weight: 10%)
+   Have value pools been identified with clear opportunity sizing/business case?
+
+   4c. **Depth of Research** (Weight: 10%)
+   Has research been conducted across the 3 Lenses – Customer, Market and Capability perspectives with clear outcomes?
+
+   4d. **Current Business Model definition** (Weight: 10%)
+   Has the existing Operating Model been explored in detail and is there proper analysis conducted to identify the challenges and gaps?
+
+   4e. **Business Model Analysis** (Weight: 5%)
+   Is there a proper analysis conducted to identify the challenges and gaps?
+
+   4f. **Target Business Model Alternatives** (Weight: 10%)
+   Has the candidate shown creativity and business acumen to arrive at multiple options of the target business model?
+
+   4g. **Criteria for Selection** (Weight: 5%)
+   Has an evaluation/selection framework been created with clear criteria to select the best alternative?
+
+   4h. **GTM approach for Target Business Model** (Weight: 5%)
+   Is there a clear articulation of the Go To Market proposition for the Target Business Model?
+
+   4i. **Translation of Business Model into Product Vision & Roadmap** (Weight: 5%)
+   Has the business model been broken down into product features and capabilities with a vision & roadmap, including an MVP? Have we considered the customer personas, user journeys and applied the Design Thinking lenses of Desirability, Viability, Feasibility and Sustainability?
+
+   4j. **Implementation plan** (Weight: 5%)
+   Has an implementation plan been created with clear timelines and team/pod structures to manage delivery? Any references to the Lean Agile/SAFe methodology is an added bonus.
+
+5. **Others** (Weight: 10%)
+   Any other considerations well articulated?
+
+EVALUATION SCALE:
+
+5 = Exceptional - Far exceeds expectations, outstanding quality
+4 = Strong - Clearly meets expectations, high quality
+3 = Adequate - Meets basic expectations, acceptable quality
+2 = Weak - Below expectations, significant gaps
+1 = Poor - Far below expectations, major deficiencies
+0 = Absent - Not addressed at all
+
+CRITICAL CRITERIA:
+- Problem Statement (4a) - Must score 4+
+- Business Model Alternatives (4f) - Must score 4+
+- All sub-criteria in Case Study Solution should average 3.5+
+
+RECOMMENDATION RULES:
+- PASS: overall_score >= 3.5 AND all critical criteria >= 4
+- BORDERLINE: overall_score >= 3.0 OR 1 critical criterion below 4
+- FAIL: overall_score < 3.0 OR 2+ critical criteria below 4

@@ -56,3 +56,9 @@ Thumbs.db
 .coverage
 htmlcov/
 nul
+
+# Generated evaluation outputs
+*_primary.txt
+*_challenges.txt
+*_response.txt
+*_decision.txt

@@ -241,12 +241,34 @@ def primary_response_node(state: EvaluationState) -> Dict[str, Any]:
 
 ## YOUR TASK
 
-Respond to each challenge raised by the peer evaluator:
+Respond to each challenge raised by the peer evaluator. **IMPORTANT:** You should DEFEND your scores vigorously if they are well-supported by evidence. Only revise if the challenge identifies a genuine error.
+
+### How to Evaluate Each Challenge:
+
+**DEFEND your original score when:**
+- The challenge questions evidence that clearly exists in the transcript
+- The challenge applies an unreasonably strict bar for the level transition
+- The challenge misinterprets or overlooks evidence you cited
+- The challenge demands perfection rather than Target Level capability
+- Your score is supported by multiple strong examples
+
+**REVISE your score when:**
+- The challenge correctly identifies missing or weak evidence
+- You realize you scored too generously relative to actual evidence
+- The challenge correctly points out "I" vs "We" attribution issues
+- The challenge correctly identifies activity metrics without outcomes
+
+**Common Invalid Challenges to REJECT:**
+- "No evidence of 12-18 month thinking" when candidate described strategic initiatives beyond quarterly scope
+- "No C-level influence" when candidate described aligning executives or presenting to leadership
+- "Insufficient business impact" when candidate quantified measurable outcomes
+- Demanding perfect Target Level demonstration when "clear capability" is the bar
 
 For each challenge:
 1. **Re-examine the transcript** - Look again at the specific area questioned
-2. **Decide:** DEFEND your original score with additional evidence OR REVISE if challenge is valid
-3. **Explain** your reasoning clearly
+2. **Evaluate the challenge** - Is it valid or does it misinterpret the evidence?
+3. **Decide:** DEFEND with additional evidence if score is justified OR REVISE if challenge is correct
+4. **Explain** your reasoning clearly - don't just accept challenges, explain WHY you defend or revise
 
 Then provide your FINAL EVALUATION with:
 

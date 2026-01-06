@@ -1,0 +1,161 @@
+PROMOTION INTERVIEW TRANSCRIPT
+Candidate: Jamie Martinez
+Current Level: PM
+Target Level: Senior PM
+Date: January 2, 2026
+
+INTERVIEWERS: VP Product (Rachel), Director of Engineering (Mike)
+
+========================================
+STRATEGIC VISION & PRODUCT SENSE
+========================================
+
+Rachel (VP Product): Tell me about a time you identified a strategic opportunity that wasn't on the roadmap.
+
+Jamie: So, um, we were working on our mobile app and I noticed that users were asking for dark mode in our feedback surveys. It wasn't on the roadmap, but I thought it would be a good feature to add.
+
+I talked to our designer and we mocked up what dark mode could look like. Then I added it to our backlog and prioritized it for the next sprint. We shipped it in about 3 weeks and got some positive feedback from users who requested it.
+
+Rachel: Can you quantify the impact?
+
+Jamie: Well, we saw some users mention it in reviews, which was nice. I think our app rating went up a little bit, maybe from 4.2 to 4.3 stars? I didn't track the specific numbers, but people seemed happy about it.
+
+Rachel: How did this fit into the broader product strategy?
+
+Jamie: It was just something users wanted, so we built it. We're pretty agile and responsive to user feedback.
+
+Rachel: How do you think about the 12-18 month horizon for your product?
+
+Jamie: Honestly, we mostly plan quarter to quarter. We have a roadmap for the next quarter, and then we kind of see what comes up after that. Things change so fast in our industry that it's hard to plan too far ahead.
+
+========================================
+STAKEHOLDER MANAGEMENT & INFLUENCE
+========================================
+
+Rachel: Tell me about a time you had to align stakeholders who had competing priorities.
+
+Jamie: Our Marketing team wanted a new landing page builder, but Engineering said they were too busy with the infrastructure migration. I was kind of caught in the middle.
+
+I set up a meeting with the Marketing manager and the Engineering team lead to talk through it. Marketing explained why they needed it - they wanted to run more campaigns. Engineering explained they were busy. It was a tough conversation because both teams felt strongly.
+
+Eventually, Engineering agreed to build a basic version after the migration finished. Marketing wasn't super happy about waiting, but that's what we decided.
+
+Mike (Dir Eng): How did you facilitate that decision?
+
+Jamie: I mostly just let both sides explain their perspectives and we talked through it. Engineering made the call that they needed to finish the migration first, which made sense from a technical perspective.
+
+Rachel: Who else was involved in this decision?
+
+Jamie: Just the Marketing manager and the Engineering team lead. I didn't want to escalate it to executives because I try to handle things at my level.
+
+Mike: Tell me about a time you had to influence someone more senior than you.
+
+Jamie: Um, that's tough. I usually try to work with people at my level. When I need something from leadership, I usually ask my manager to help me navigate that.
+
+There was one time when I needed approval for a small budget increase for user research - like $5K. I put together a quick deck and my manager presented it to the VP. It got approved, which was great.
+
+========================================
+EXECUTION EXCELLENCE
+========================================
+
+Rachel: Walk me through your most complex product initiative.
+
+Jamie: Probably the mobile app redesign we did last year. It was a big project - took about 4 months.
+
+We wanted to update the look and feel to be more modern. I worked with our designer to create new mockups. Then I wrote specs for each screen and worked with the mobile engineering team to build it.
+
+We had some challenges along the way. The initial build took longer than expected - we thought it would be 3 months but it ended up being 4 months. Some of the UI components were more complex than we thought.
+
+We did a beta test with about 50 users and got some feedback. Made some tweaks based on that, then launched to everyone.
+
+Mike: How did you manage the scope and timeline?
+
+Jamie: I had a project plan in a spreadsheet with all the screens and target dates. I updated it weekly and shared it with the team in our standups.
+
+When we realized we were running behind, I talked to Engineering about what we could cut. We ended up pushing some of the nice-to-have animations to v2.
+
+Mike: What was the business impact?
+
+Jamie: Users liked the new design. We got some positive comments in our support channel. I think our app usage stayed about the same - like our DAU was pretty stable before and after, so at least we didn't lose users.
+
+Rachel: What would you have done differently?
+
+Jamie: I probably should have estimated more time for engineering. I was optimistic about how long it would take. Also, maybe we should have done more user testing upfront, but we were trying to move fast.
+
+========================================
+TEAM DEVELOPMENT & LEADERSHIP
+========================================
+
+Rachel: Tell me about how you've developed other PMs or team members.
+
+Jamie: We have a pretty small PM team - just 3 of us including me. We do weekly team syncs where we share what we're working on and help each other out.
+
+There's an Associate PM, Chris, who joined last year. I try to help Chris when he has questions. Like, if Chris is confused about how to write a spec or prioritize features, I'll walk him through my approach.
+
+Rachel: Can you give a specific example of how you developed Chris?
+
+Jamie: Sure. Chris was working on a feature for our settings page and didn't know how to handle a conflict with Engineering about the implementation. I told Chris how I usually handle those situations - I schedule a meeting and we talk through the options.
+
+Chris used that approach and it worked out.
+
+Mike: Have you formally mentored anyone?
+
+Jamie: Not formally, but I'm always happy to help team members when they ask.
+
+Rachel: Tell me about a time you had to deliver difficult feedback.
+
+Jamie: Oh, that's tough. I try to be pretty positive and collaborative. I don't think I've really had to give someone hard feedback.
+
+There was one time when Chris missed a deadline and I mentioned it in our 1:1, like "Hey, this spec was supposed to be done last Friday." Chris apologized and got it done that day.
+
+========================================
+DATA & DECISION MAKING
+========================================
+
+Rachel: How do you use data to make product decisions?
+
+Jamie: We look at our analytics dashboard regularly. We track things like DAU, MAU, feature usage, that kind of stuff.
+
+When we're deciding what to build, I'll look at what features are being used the most and what users are requesting in feedback.
+
+Rachel: Give me an example of a data-driven decision you made.
+
+Jamie: We were trying to decide whether to improve our search feature or add new filters. I looked at our usage data and saw that search was being used more than filters - like 60% of users used search vs 30% for filters.
+
+So we decided to focus on search improvements first.
+
+Rachel: What was the outcome?
+
+Jamie: We improved the search algorithm and added auto-complete. Users seemed to find things faster after that. I didn't set up specific metrics to track the impact, but anecdotally it felt like an improvement.
+
+Mike: What do you do when the data is inconclusive?
+
+Jamie: That's tough. I guess I'd try to get more data? Or maybe just make a judgment call based on my product intuition and what users are saying.
+
+========================================
+WHY SENIOR PM
+========================================
+
+Rachel: Why do you want to be promoted to Senior PM?
+
+Jamie: I've been a PM for 3 years now and I feel like I'm ready for the next level. I've shipped a lot of features and managed some big projects like the mobile redesign.
+
+I'm a strong executor and I work well with Engineering and Design. I think I could take on more responsibility and maybe mentor other PMs more formally.
+
+Also, I'd like the career progression and recognition that comes with the Senior PM title.
+
+Rachel: What do you think distinguishes a Senior PM from a PM?
+
+Jamie: Senior PMs probably work on bigger projects and have more experience. They might own a larger part of the product or work on more strategic initiatives.
+
+Mike: What would you do differently in your first 90 days as a Senior PM?
+
+Jamie: I'd probably take on ownership of a bigger feature area. Maybe start thinking more strategically about our roadmap instead of just quarter to quarter.
+
+I'd also want to spend more time mentoring the Associate PM and helping our team work more efficiently.
+
+Rachel: How would you describe your impact in the last year?
+
+Jamie: I shipped a lot of features - probably like 15-20 features across web and mobile. I kept our roadmap moving forward and maintained good relationships with Engineering and Design.
+
+I think I helped make our product better by being responsive to user feedback and prioritizing the right things to build.

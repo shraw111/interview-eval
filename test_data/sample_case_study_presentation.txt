@@ -1,0 +1,483 @@
+CASE STUDY PRESENTATION TRANSCRIPT
+Candidate: Taylor Kim
+Presentation Title: "Digital Transformation Strategy for Regional Bank"
+Duration: 45 minutes
+Date: January 4, 2026
+
+---
+
+[SLIDE 1 - Title Slide]
+Professional template with company logo, clean design, blue/white color scheme
+
+"Digital Transformation Strategy for Regional Bank"
+Presented by: Taylor Kim
+Date: January 2026
+
+---
+
+[SLIDE 2 - Executive Summary]
+
+"Good morning. Today I'll present a comprehensive digital transformation strategy for Metro Regional Bank, a 50-year-old institution facing declining market share among younger customers."
+
+"The presentation is structured in four parts:
+1. Problem definition and current state analysis
+2. Market opportunity and research findings
+3. Target business model alternatives
+4. Implementation roadmap"
+
+---
+
+[SLIDE 3 - Problem Statement]
+
+"Metro Regional Bank faces a critical challenge: they've lost 22% market share among 25-40 year old customers over the past 3 years, while digital-native competitors like Chime and SoFi have captured this segment.
+
+The core problem: Their current business model is built around physical branches and in-person service, which doesn't align with how younger customers want to bank.
+
+Specifically:
+- 78% of target customers prefer mobile-first banking
+- Branch operating costs are $2.4M annually per location
+- Digital channel adoption is only 35% vs 80% industry average
+- Customer acquisition cost is 3x higher than digital competitors"
+
+---
+
+[SLIDE 4 - Current Business Model Analysis - Framework]
+
+Using Porter's Value Chain framework to analyze current state:
+
+**Primary Activities:**
+- **Inbound**: Manual account opening, paper-based processes (28% of operational costs)
+- **Operations**: Branch-centric service delivery, legacy core banking system
+- **Outbound**: Limited digital channels, primarily phone and in-person
+- **Marketing**: Traditional advertising (print, TV), minimal digital presence
+- **Service**: Relationship managers in branches, limited self-service
+
+**Support Activities:**
+- Technology: Legacy systems, 15-year-old core platform
+- HR: Branch-focused workforce, limited digital skills
+- Infrastructure: 47 physical branches, high fixed costs
+
+**Key Finding**: 68% of operating costs tied to physical infrastructure"
+
+---
+
+[SLIDE 5 - Current State Gaps]
+
+Analysis of Current vs Required Capabilities:
+
+**Major Gaps Identified:**
+1. **Customer Experience**: 4.2 day account opening vs 10 minutes for digital banks
+2. **Technology Stack**: Monolithic architecture can't support rapid feature deployment
+3. **Cost Structure**: $85 cost per transaction vs $0.10 for digital transactions
+4. **Product Innovation**: 18-month product development cycle vs 6 weeks for competitors
+5. **Data & Personalization**: No real-time customer insights or personalized offerings
+
+**Root Cause**: Business model optimized for physical distribution, not digital customer needs"
+
+---
+
+[SLIDE 6 - Research Methodology - Three Lenses]
+
+"We conducted comprehensive research across three lenses:
+
+**1. Customer Lens (n=500 target customers):**
+- 45 in-depth interviews with 25-40 year olds
+- Survey of 500 target customers
+- Journey mapping for 6 key use cases
+
+**Key Findings:**
+- 85% want instant account opening
+- 72% expect personalized financial advice via app
+- 91% won't visit branches for routine transactions
+- Top pain point: 'My bank doesn't understand my financial goals'
+
+**2. Market Lens:**
+- Competitive analysis of 8 digital-first banks
+- Market sizing: $127B opportunity in target segment
+- Trend analysis: 40% CAGR in digital banking adoption
+
+**Key Findings:**
+- Digital banks capturing 15% market share annually
+- Average customer lifetime value: $1,850 for digital segment
+- 3 major competitors control 65% of digital market
+
+**3. Capability Lens (Internal Assessment):**
+- Technology audit: Legacy system assessment
+- Talent assessment: Skills gap analysis
+- Process mapping: 12 core banking processes
+
+**Key Findings:**
+- Core banking platform can't support API integrations
+- 15% of workforce has digital product skills
+- Regulatory compliance adds 6 months to product launches"
+
+---
+
+[SLIDE 7 - Opportunity Sizing]
+
+**Total Addressable Market:**
+- Target segment: 2.4M customers aged 25-40 in region
+- Average deposits per customer: $12,500
+- Potential deposit base: $30B
+
+**Value Pool Analysis:**
+
+1. **Deposit Growth** ($450M over 3 years):
+   - Capture 5% market share = 120K new customers
+   - $12.5K average deposits × 120K = $1.5B deposits
+   - Net interest margin 3% = $45M annual
+   - 3-year value: $450M
+
+2. **Fee Income** ($180M over 3 years):
+   - Transaction fees, overdraft protection, premium features
+   - $50/customer/year × 120K customers = $6M annual
+   - 3-year value: $180M
+
+3. **Cost Savings** ($210M over 3 years):
+   - Branch consolidation: Close 15 branches = $36M annual savings
+   - Digital transactions: 70% of transactions move to digital = $22M annual savings
+   - Operational efficiency: Automation saves $12M annual
+   - 3-year value: $210M
+
+**Total Business Case: $840M value creation over 3 years**
+**Investment Required: $145M (technology + transformation)**
+**Net ROI: 5.8x**"
+
+---
+
+[SLIDE 8 - Target Business Model - Alternative 1: Digital-First Hybrid]
+
+"I've developed three alternative business models. Let me walk through each:
+
+**Alternative 1: Digital-First Hybrid Model**
+
+**Value Proposition**:
+- Mobile-first banking with optional branch access for complex needs
+- Keep 10 flagship branches in metro areas, close 37 smaller branches
+
+**Operating Model:**
+- Digital channels handle 80% of transactions
+- Branches become 'advice centers' for mortgages/wealth management
+- Relationship managers work remotely, serve customers via video
+
+**Technology Stack:**
+- Migrate to cloud-native core banking (18-month migration)
+- API-first architecture for partner integrations
+- Real-time personalization engine
+
+**Revenue Model:**
+- Freemium: Basic accounts free, premium features $9.99/month
+- Transaction fees for advanced services
+- Marketplace revenue: Partner integrations (insurance, investments)
+
+**Cost Structure:**
+- 60% reduction in branch costs
+- 40% increase in technology spending
+- Break-even in year 2
+
+**Risk Level**: Moderate - Requires significant technology transformation"
+
+---
+
+[SLIDE 9 - Target Business Model - Alternative 2: Pure Digital Bank]
+
+"**Alternative 2: Launch Separate Digital Brand**
+
+**Value Proposition**:
+- Create new digital-only brand targeting 25-40 demographic
+- Keep Metro Regional Bank for existing customers 50+
+- Dual-brand strategy
+
+**Operating Model:**
+- Zero physical branches for new brand
+- 100% digital customer acquisition and service
+- Separate technology stack, brand, team
+
+**Technology Stack:**
+- Build on modern cloud platform from scratch (12 months)
+- Best-of-breed fintech partnerships (Plaid, Stripe, etc.)
+- AI-powered chatbot + limited human support
+
+**Revenue Model:**
+- Subscription: $5/month for premium account
+- Interchange fees from debit card usage
+- Lending products (personal loans, auto)
+
+**Cost Structure:**
+- Minimal fixed costs (no branches)
+- High customer acquisition costs initially ($200/customer)
+- Gross margin 85% after scale
+
+**Risk Level**: High - Unproven brand, requires large upfront investment, cannibalization risk"
+
+---
+
+[SLIDE 10 - Target Business Model - Alternative 3: Partnership Platform]
+
+"**Alternative 3: Banking-as-a-Service Platform**
+
+**Value Proposition**:
+- Become infrastructure provider for fintechs and neobanks
+- White-label banking services via APIs
+- B2B2C model
+
+**Operating Model:**
+- Maintain regulatory banking license
+- Provide core banking, compliance, risk management as service
+- Partners handle customer acquisition and UX
+
+**Technology Stack:**
+- API-first banking platform
+- Developer portal and sandbox
+- Robust compliance and risk management systems
+
+**Revenue Model:**
+- Platform fees: $0.25 per API call
+- Revenue share: 15% of partner transaction revenue
+- Compliance-as-a-service fees
+
+**Cost Structure:**
+- High initial technology investment
+- Low marginal cost per partner
+- Scalable revenue model
+
+**Risk Level**: High - Requires deep technology capabilities, regulatory complexity"
+
+---
+
+[SLIDE 11 - Selection Framework - BCG Matrix Analysis]
+
+"To evaluate these alternatives, I've created a selection framework using modified BCG Matrix:
+
+**Evaluation Criteria (Weighted):**
+1. Strategic Fit (25%): Alignment with bank's core competencies
+2. Financial Returns (25%): 3-year NPV and ROI
+3. Risk Level (20%): Technology, regulatory, market risk
+4. Time to Market (15%): Speed to capture opportunity
+5. Competitive Advantage (15%): Defensibility and differentiation
+
+**Scoring (1-5 scale):**
+
+| Criterion | Weight | Alt 1: Hybrid | Alt 2: Digital | Alt 3: Platform |
+|-----------|--------|---------------|----------------|-----------------|
+| Strategic Fit | 25% | 4 | 3 | 2 |
+| Financial Returns | 25% | 4 | 5 | 4 |
+| Risk Level | 20% | 4 | 2 | 2 |
+| Time to Market | 15% | 3 | 4 | 2 |
+| Competitive Advantage | 15% | 3 | 4 | 5 |
+| **Weighted Score** | **100%** | **3.7** | **3.6** | **3.0** |
+
+**Recommendation**: Alternative 1 (Digital-First Hybrid) - Best balance of returns, risk, and strategic fit"
+
+---
+
+[SLIDE 12 - Go-To-Market Approach]
+
+"For the recommended Digital-First Hybrid model, here's the GTM strategy:
+
+**Phase 1: Pilot (Months 1-6)**
+- Launch digital app to existing customers first
+- Target: 10K active users, gather feedback
+- Messaging: 'Your Metro Bank, now mobile-first'
+- Channels: Email to existing customers, in-branch signage
+
+**Phase 2: Soft Launch to Target Segment (Months 7-12)**
+- Limited external marketing to 25-35 age group
+- Target: 25K new customer acquisitions
+- Messaging: 'Local bank that gets you'
+- Channels: Instagram/TikTok ads, referral program ($50 bonus)
+- Partnership: Local businesses for co-marketing
+
+**Phase 3: Scaled Acquisition (Year 2-3)**
+- Full marketing push across all channels
+- Target: 120K new customers by end of Year 3
+- Messaging: 'Digital banking with hometown values'
+- Channels: Digital ads, content marketing, influencer partnerships
+- Branch transformation: Relaunch flagship branches as advice centers
+
+**Customer Acquisition Cost Model:**
+- Phase 1: $25/customer (existing base)
+- Phase 2: $125/customer (early adopters)
+- Phase 3: $200/customer (mass market)
+- Blended CAC: $150/customer
+
+**Retention Strategy:**
+- Personalized financial coaching via app
+- Automated savings and investment tools
+- Community features (local events, small business support)"
+
+---
+
+[SLIDE 13 - Product Vision & Roadmap]
+
+"**Product Vision:**
+'Empower young professionals to achieve financial wellness through intelligent, mobile-first banking'
+
+**Customer Personas:**
+
+1. **Sarah - The Career Builder** (35% of target)
+   - Age 28, early-career professional
+   - Needs: Budgeting tools, automated savings
+   - Pain point: Can't save consistently
+
+2. **Marcus - The Side Hustler** (40% of target)
+   - Age 32, freelancer + side businesses
+   - Needs: Easy invoicing, tax planning
+   - Pain point: Managing multiple income streams
+
+3. **Jessica - The Young Family** (25% of target)
+   - Age 37, married with kids
+   - Needs: Joint accounts, college savings
+   - Pain point: Planning for future expenses
+
+**User Journey Example (Sarah - Opening Account):**
+1. Discover: See Instagram ad → Download app
+2. Onboard: 3-minute signup, instant approval
+3. First Use: Link external accounts, set savings goal
+4. Engagement: Weekly financial insights, automatic savings
+5. Advocacy: Refer friends for bonus
+
+**MVP Features (Month 1-6):**
+- Instant account opening (3 minutes)
+- Mobile check deposit
+- Real-time spending notifications
+- Automated savings rules
+- Person-to-person payments
+
+**Product Roadmap:**
+
+**Wave 1 (Months 1-6) - Core Banking:**
+- Account management
+- Debit card with instant controls
+- Budgeting tools
+- Bill pay
+
+**Wave 2 (Months 7-12) - Smart Banking:**
+- AI-powered spending insights
+- Automated savings based on behavior
+- Round-up savings to investments
+- Credit score monitoring
+
+**Wave 3 (Year 2) - Financial Wellness:**
+- Personal financial coaching (AI + human)
+- Integrated investment accounts
+- Small business banking features
+- Mortgage pre-qualification
+
+**Design Thinking Lenses Applied:**
+
+**Desirability** (Customer-Centric):
+- Validated through 500 customer interviews
+- Addresses top 3 pain points identified
+- NPS target: 60+ (vs current 32)
+
+**Viability** (Business Model):
+- $840M value creation over 3 years
+- Break-even in 24 months
+- Clear path to profitability
+
+**Feasibility** (Technical):
+- Cloud-native architecture enables rapid iteration
+- API integrations with proven fintech partners
+- 18-month migration plan for core systems
+
+**Sustainability** (Long-term):
+- Renewable revenue model (subscriptions + transactions)
+- Scalable technology platform
+- Reduces environmental footprint (less branches)"
+
+---
+
+[SLIDE 14 - Implementation Plan]
+
+"**18-Month Implementation Roadmap:**
+
+**Phase 1: Foundation (Months 1-6)**
+- **Technology**: Begin core banking migration, API platform development
+- **Organization**: Hire digital product team (8 PMs, 40 engineers, 12 designers)
+- **Process**: Establish agile pods, define MVP scope
+- **Timeline**: Weeks 1-24
+- **Team Structure**: 5 product pods (Onboarding, Transactions, Insights, Lending, Platform)
+- **Deliverable**: MVP ready for pilot
+
+**Phase 2: Pilot & Learn (Months 7-12)**
+- **Technology**: Complete core migration, launch MVP to existing customers
+- **Organization**: Build customer support team, train branch staff
+- **Process**: Weekly release cycles, continuous discovery
+- **Timeline**: Weeks 25-48
+- **Team Structure**: Add 2 growth pods (Acquisition, Retention)
+- **Deliverable**: 10K active users, product-market fit validated
+
+**Phase 3: Scale (Months 13-18)**
+- **Technology**: Feature expansion (Waves 2-3), infrastructure scaling
+- **Organization**: Expand to 12 product pods, mature platform team
+- **Process**: SAFe implementation for coordination at scale
+- **Timeline**: Weeks 49-72
+- **Team Structure**: 12 cross-functional pods + platform team
+- **Deliverable**: 50K customers, $200M deposits
+
+**Agile/SAFe References:**
+- **PI Planning**: Quarterly planning sessions for all pods
+- **Inspect & Adapt**: Bi-weekly retrospectives and monthly demos
+- **DevOps**: CI/CD pipeline, automated testing, daily deployments
+- **Lean Portfolio Management**: Business epics prioritized by WSJF (Weighted Shortest Job First)
+
+**Governance:**
+- Steering Committee: CEO, CTO, CCO, CMO (monthly)
+- Product Council: Product leads (weekly)
+- Risk & Compliance: Continuous oversight with dedicated team
+
+**Success Metrics:**
+- Month 6: MVP launched, 10K users, NPS 50+
+- Month 12: 25K users, $300M deposits, 40% digital adoption
+- Month 18: 50K users, $600M deposits, break-even on digital unit economics"
+
+---
+
+[SLIDE 15 - Risk Mitigation]
+
+"Key Risks and Mitigation:
+
+1. **Technology Risk**: Core migration fails
+   - Mitigation: Parallel run for 6 months, fallback plan to legacy
+
+2. **Regulatory Risk**: New digital products require lengthy approvals
+   - Mitigation: Early engagement with regulators, compliance-first design
+
+3. **Execution Risk**: Can't hire digital talent
+   - Mitigation: Partner with product studio for first 12 months
+
+4. **Market Risk**: Competitors react aggressively
+   - Mitigation: Speed to market, differentiate on local community connection"
+
+---
+
+[SLIDE 16 - Summary & Next Steps]
+
+"In summary:
+
+**Problem**: Metro Regional Bank losing young customers to digital competitors
+
+**Solution**: Digital-First Hybrid model combining mobile-first banking with strategic branch network
+
+**Opportunity**: $840M value creation over 3 years
+
+**Path Forward**: 18-month transformation with phased implementation
+
+**Next Steps:**
+1. Board approval for $145M investment (Month 1)
+2. Begin technology partner selection (Month 1-2)
+3. Recruit digital leadership team (Month 1-3)
+4. Kick off Phase 1 implementation (Month 2)
+
+Thank you. Questions?"
+
+---
+
+[END OF PRESENTATION]
+
+**Post-Presentation Q&A Notes:**
+- Answered 8 questions from evaluation panel
+- Demonstrated deep understanding of banking regulations
+- Provided additional detail on customer research methodology
+- Discussed alternative MVP scoping options
