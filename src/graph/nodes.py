@@ -48,18 +48,22 @@ def primary_evaluator_node(state: EvaluationState) -> Dict[str, Any]:
     sys.stderr.write(f"[PRIMARY] Loaded prompt in {time.time() - prompt_start:.2f}s\n")
     sys.stderr.flush()
 
-    # Build user message
-    user_message = f"""## EVALUATION CONTEXT
+    # Build user message with optional level context
+    level_context = ""
+    if state['candidate_info'].get('current_level') or state['candidate_info'].get('target_level'):
+        level_context = f"""## EVALUATION CONTEXT
 
-**Current Level:** {state['candidate_info']['current_level']}
-**Target Level:** {state['candidate_info']['target_level']}
-
+**Current Level:** {state['candidate_info'].get('current_level', 'N/A')}
+**Target Level:** {state['candidate_info'].get('target_level', 'N/A')}
+"""
+        if state['candidate_info'].get('level_expectations'):
+            level_context += f"""
 **What Distinguishes Target from Current Level:**
 {state['candidate_info']['level_expectations']}
+"""
+        level_context += "\n---\n\n"
 
----
-
-## EVALUATION CRITERIA (RUBRIC)
+    user_message = f"""{level_context}## EVALUATION CRITERIA (RUBRIC)
 
 {state['rubric']}
 
@@ -199,158 +203,21 @@ Review the primary evaluation and generate challenges. Focus on:
     }
 
 
-def primary_response_node(state: EvaluationState) -> Dict[str, Any]:
-    """
-    Node 3: Primary evaluator responds to challenges.
-
-    Args:
-        state: Current evaluation state
-
-    Returns:
-        Dictionary with updates to state (final_evaluation, metadata)
-    """
-    import sys
-    import time
-
-    node_start = time.time()
-    sys.stderr.write("\n" + "="*60 + "\n")
-    sys.stderr.write("[RESPONSE AGENT NODE] Starting...\n")
-    sys.stderr.flush()
-
-    # Get active prompt (same as primary)
-    system_prompt = prompt_manager.get_active_prompt("primary_agent")
-
-    # Build user message
-    user_message = f"""## YOUR ORIGINAL EVALUATION
-
-{state['primary_evaluation']}
-
----
-
-## CHALLENGES FROM PEER REVIEWER
-
-{state['challenges']}
-
----
-
-## ORIGINAL TRANSCRIPT (for re-examination)
-
-{state['transcript']}
-
----
-
-## YOUR TASK
-
-Respond to each challenge raised by the peer evaluator. **IMPORTANT:** You should DEFEND your scores vigorously if they are well-supported by evidence. Only revise if the challenge identifies a genuine error.
-
-### How to Evaluate Each Challenge:
-
-**DEFEND your original score when:**
-- The challenge questions evidence that clearly exists in the transcript
-- The challenge applies an unreasonably strict bar for the level transition
-- The challenge misinterprets or overlooks evidence you cited
-- The challenge demands perfection rather than Target Level capability
-- Your score is supported by multiple strong examples
-
-**REVISE your score when:**
-- The challenge correctly identifies missing or weak evidence
-- You realize you scored too generously relative to actual evidence
-- The challenge correctly points out "I" vs "We" attribution issues
-- The challenge correctly identifies activity metrics without outcomes
-
-**Common Invalid Challenges to REJECT:**
-- "No evidence of 12-18 month thinking" when candidate described strategic initiatives beyond quarterly scope
-- "No C-level influence" when candidate described aligning executives or presenting to leadership
-- "Insufficient business impact" when candidate quantified measurable outcomes
-- Demanding perfect Target Level demonstration when "clear capability" is the bar
-
-For each challenge:
-1. **Re-examine the transcript** - Look again at the specific area questioned
-2. **Evaluate the challenge** - Is it valid or does it misinterpret the evidence?
-3. **Decide:** DEFEND with additional evidence if score is justified OR REVISE if challenge is correct
-4. **Explain** your reasoning clearly - don't just accept challenges, explain WHY you defend or revise
-
-Then provide your FINAL EVALUATION with:
-
-## RESPONSES TO CHALLENGES
-
-[For each challenge: Original score, Challenge summary, Your response, Decision (DEFEND/REVISE), Justification]
-
-## FINAL SCORES (After Calibration)
-
-[Complete table with all criteria - show which scores changed]
-
-## SCORE CHANGES SUMMARY
-
-[Table showing: Criterion | Initial | Revised | Reason]
-
-## RECALCULATED WEIGHTED SCORE
-
-[Show the math with new scores]
-
-## UPDATED CRITICAL CRITERIA STATUS
-
-[Check if any status changed]
-
-## FINAL RECOMMENDATION
-
-**Decision:** [STRONG RECOMMEND / RECOMMEND / BORDERLINE / DO NOT RECOMMEND]
-
-**Rationale:** [Updated based on calibrated scores]
-
-**Key Changes from Initial Assessment:**
-[What changed during calibration and how it affected recommendation]
-
-**Development Areas (if promoting):**
-1. [Specific actionable area]
-2. [Specific actionable area]
-"""
-
-    # Call Anthropic Claude
-    model_config = config["models"]["response_agent"]
-    sys.stderr.write(f"[RESPONSE] Calling API with max_tokens={model_config['max_tokens']}...\n")
-    sys.stderr.flush()
-
-    final_text, input_tokens, output_tokens = call_anthropic_claude(
-        model_name=model_config["model_name"],
-        system_prompt=system_prompt,
-        user_message=user_message,
-        max_tokens=model_config["max_tokens"],
-        temperature=model_config["temperature"]
-    )
-
-    node_duration = time.time() - node_start
-    sys.stderr.write(f"[RESPONSE] COMPLETE - Total node time: {node_duration:.2f}s\n")
-    sys.stderr.write("="*60 + "\n\n")
-    sys.stderr.flush()
-
-    # Return updates (don't calculate totals yet - decision agent still needs to run)
-    return {
-        "final_evaluation": final_text,
-        "metadata": {
-            **state["metadata"],
-            "tokens": {
-                **state["metadata"]["tokens"],
-                "final_input": input_tokens,
-                "final_output": output_tokens
-            },
-            "timestamps": {
-                **state["metadata"]["timestamps"],
-                "final": datetime.now().isoformat()
-            }
-        }
-    }
-
-
 def decision_agent_node(state: EvaluationState) -> Dict[str, Any]:
     """
-    Node 4: Decision agent makes final promotion recommendation.
+    Node 3: Unified decision agent - defends/calibrates AND makes final decision.
+
+    This agent:
+    1. Receives original evaluation + challenges + transcript
+    2. Responds to each challenge (DEFEND or REVISE)
+    3. Produces calibrated final scores
+    4. Makes final promotion decision
 
     Args:
         state: Current evaluation state
 
     Returns:
-        Dictionary with updates to state (decision, metadata with totals)
+        Dictionary with updates to state (final_evaluation, decision, metadata with totals)
     """
     import sys
     import time
@@ -360,44 +227,82 @@ def decision_agent_node(state: EvaluationState) -> Dict[str, Any]:
     sys.stderr.write("[DECISION AGENT NODE] Starting...\n")
     sys.stderr.flush()
 
-    # Get active prompt
+    # Get active prompt (use updated decision_agent prompt)
     system_prompt = prompt_manager.get_active_prompt("decision_agent")
 
-    # Build user message
-    user_message = f"""## CALIBRATED EVALUATION (After Primary Response to Challenges)
-
-{state['final_evaluation']}
+    # Build user message with FULL DEBATE CONTEXT
+    user_message = f"""## YOUR ORIGINAL EVALUATION (from Primary Evaluator)
+{state['primary_evaluation']}
 
 ---
 
-## RUBRIC
+## CHALLENGES FROM PEER REVIEWER
+{state['challenges']}
 
+---
+
+## ORIGINAL TRANSCRIPT (for re-examination)
+{state['transcript']}
+
+---
+
+## RUBRIC (for verification)
 {state['rubric']}
 
 ---
 
 ## CANDIDATE INFORMATION
-
 **Name:** {state['candidate_info']['name']}
-**Current Level:** {state['candidate_info']['current_level']}
-**Target Level:** {state['candidate_info']['target_level']}
-**Years at Current Level:** {state['candidate_info']['years_experience']}
+{f"**Current Level:** {state['candidate_info']['current_level']}" if state['candidate_info'].get('current_level') else ""}
+{f"**Target Level:** {state['candidate_info']['target_level']}" if state['candidate_info'].get('target_level') else ""}
+{f"**Years at Current Level:** {state['candidate_info']['years_experience']}" if state['candidate_info'].get('years_experience') is not None else ""}
 
-**Level Expectations:**
-{state['candidate_info']['level_expectations']}
+{f"**Level Expectations:**\\n{state['candidate_info']['level_expectations']}" if state['candidate_info'].get('level_expectations') else ""}
 
 ---
 
 ## YOUR TASK
 
-Review the calibrated evaluation and make a final promotion decision:
+You must complete TWO parts in sequence:
 
-1. Extract the overall scores and identify critical criteria from the rubric
+### PART 1: RESPOND TO CHALLENGES (Calibration)
+
+Review each challenge from the peer evaluator. For each challenge:
+
+**DEFEND your original score when:**
+- The challenge questions evidence that clearly exists in the transcript
+- The challenge applies an unreasonably strict bar
+- The challenge misinterprets or overlooks cited evidence
+- Your score is supported by multiple strong examples
+
+**REVISE your score when:**
+- The challenge correctly identifies missing or weak evidence
+- You scored too generously relative to actual evidence
+- The challenge correctly points out "I" vs "We" attribution issues
+- The challenge correctly identifies activity without outcomes
+
+Provide:
+1. **RESPONSES TO CHALLENGES** - For each: Original score, Challenge summary, Your response, Decision (DEFEND/REVISE), Justification
+2. **FINAL SCORES (After Calibration)** - Complete table showing which scores changed
+3. **SCORE CHANGES SUMMARY** - Table: Criterion | Initial | Revised | Reason
+
+### PART 2: FINAL PROMOTION DECISION
+
+Based on the calibrated evaluation:
+
+1. Extract overall scores and critical criteria status
 2. Conduct holistic assessment beyond just scores
-3. Assess promotion risk
+3. Assess promotion risk and readiness
 4. Make final decision: **STRONG RECOMMEND / RECOMMEND / BORDERLINE / DO NOT RECOMMEND**
 
-Provide comprehensive rationale, key factors, development areas, and confidence level.
+Provide:
+- **Decision** with clear label
+- **Rationale** explaining why
+- **Critical Factors** that influenced decision
+- **Strengths** supporting the decision
+- **Concerns/Gaps** if any
+- **Development Areas** if promoting
+- **Confidence Level** in this decision
 """
 
     # Call Anthropic Claude
@@ -426,37 +331,37 @@ Provide comprehensive rationale, key factors, development areas, and confidence 
     total_input = (
         state["metadata"]["tokens"]["primary_input"] +
         state["metadata"]["tokens"]["challenge_input"] +
-        state["metadata"]["tokens"]["final_input"] +
         input_tokens
     )
 
     total_output = (
         state["metadata"]["tokens"]["primary_output"] +
         state["metadata"]["tokens"]["challenge_output"] +
-        state["metadata"]["tokens"]["final_output"] +
         output_tokens
     )
 
     total_tokens = total_input + total_output
     total_cost = calculate_cost(total_input, total_output)
 
-    # Return updates with final totals
+    # Return updates - decision_text contains BOTH calibration AND final decision
     return {
-        "decision": decision_text,
+        "final_evaluation": decision_text,  # Keep for backward compatibility
+        "decision": decision_text,  # Full output with both parts
         "metadata": {
             **state["metadata"],
             "tokens": {
                 **state["metadata"]["tokens"],
                 "decision_input": input_tokens,
                 "decision_output": output_tokens,
+                "total_input": total_input,
+                "total_output": total_output,
                 "total": total_tokens
             },
             "timestamps": {
                 **state["metadata"]["timestamps"],
-                "decision": end_time.isoformat()
+                "decision": datetime.now().isoformat()
             },
-            "execution_time_seconds": round(execution_time, 1),
-            "cost_usd": round(total_cost, 2),
-            "model_version": model_config["model_name"]
+            "total_cost_usd": total_cost,
+            "execution_time_seconds": execution_time
         }
     }

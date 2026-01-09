@@ -7,7 +7,7 @@ openai>=1.12.0
 
 # LangChain - Updated to compatible newer versions
 langchain>=0.1.0
-langgraph>=0.0.40
+langgraph>=0.2.0
 langsmith>=0.1.40
 langchain-core>=0.1.0
 langchain-community>=0.0.32

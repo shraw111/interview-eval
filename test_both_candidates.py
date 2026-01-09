@@ -69,10 +69,6 @@ def run_evaluation(candidate_name, transcript_file, expected_outcome):
                 challenges = node_output.get('challenges', '')
                 print(f"[CHALLENGE] {len(challenges)} chars")
 
-            elif node_name == 'primary_response':
-                final_eval = node_output.get('final_evaluation', '')
-                print(f"[RESPONSE] {len(final_eval)} chars")
-
             elif node_name == 'decision_agent':
                 decision = node_output.get('decision', '')
                 print(f"[DECISION] {len(decision)} chars")

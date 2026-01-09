@@ -62,3 +62,10 @@ nul
 *_challenges.txt
 *_response.txt
 *_decision.txt
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/.vercel

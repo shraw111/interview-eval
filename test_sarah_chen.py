@@ -60,19 +60,6 @@ for chunk in evaluation_graph.stream(initial_state, stream_mode='updates'):
             with open('sarah_chen_challenges.txt', 'w', encoding='utf-8') as f:
                 f.write(challenges)
             print()
-        elif node_name == 'primary_response':
-            print('[PRIMARY_RESPONSE]')
-            final_eval = node_output.get('final_evaluation', '')
-            print(f"Final evaluation: {len(final_eval)} chars")
-            with open('sarah_chen_response.txt', 'w', encoding='utf-8') as f:
-                f.write(final_eval)
-
-            # Try to extract scores from final evaluation
-            if 'FINAL SCORES' in final_eval:
-                print("\nExtracting scores from final evaluation...")
-                score_section = final_eval[final_eval.find('FINAL SCORES'):final_eval.find('FINAL SCORES')+1000]
-                print(score_section[:500])
-            print()
         elif node_name == 'decision_agent':
             print('[DECISION_AGENT]')
             decision = node_output.get('decision', '')

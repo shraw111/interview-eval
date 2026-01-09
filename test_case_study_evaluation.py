@@ -68,12 +68,6 @@ for chunk in evaluation_graph.stream(initial_state, stream_mode='updates'):
             with open('case_study_challenges.txt', 'w', encoding='utf-8') as f:
                 f.write(challenges)
 
-        elif node_name == 'primary_response':
-            print('[RESPONSE AGENT] Complete')
-            final_eval = node_output.get('final_evaluation', '')
-            with open('case_study_response.txt', 'w', encoding='utf-8') as f:
-                f.write(final_eval)
-
         elif node_name == 'decision_agent':
             print('[DECISION AGENT] Complete')
             decision = node_output.get('decision', '')

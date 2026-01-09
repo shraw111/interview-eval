@@ -1,21 +1,21 @@
 models:
   primary_agent:
-    model_name: "gpt-4o"
+    model_name: "gpt-5.2"
     max_tokens: 16384  # Maximum for comprehensive evaluation
     temperature: 0.0
 
   challenge_agent:
-    model_name: "gpt-4o"
+    model_name: "gpt-5.2"
     max_tokens: 16384  # Maximum for thorough challenges
     temperature: 0.0
 
   response_agent:
-    model_name: "gpt-4o"
+    model_name: "gpt-5.2"
     max_tokens: 16384  # Maximum for full responses
     temperature: 0.0
 
   decision_agent:
-    model_name: "gpt-4o"
+    model_name: "gpt-5.2"
     max_tokens: 16384  # Maximum for complete decision
     temperature: 0.0
 

@@ -1,82 +1,137 @@
-"""
-Quick test script to verify the evaluation workflow works end-to-end.
-"""
+"""End-to-end test for evaluation with real agents."""
 
-from src.graph.graph import evaluation_graph
-from src.graph.state import create_initial_state
+import requests
+import json
+import time
 
-# Sample data
-candidate_info = {
-    'name': 'Test Candidate',
-    'current_level': 'PM',
-    'target_level': 'Senior PM',
-    'years_experience': 3,
-    'level_expectations': 'Senior PMs should define strategy, not just execute. They should influence product direction and align stakeholders.'
-}
+def test_evaluation():
+    print("Testing Full Evaluation Pipeline...")
+    print("=" * 60)
 
-rubric = """
-I need to evaluate a PM for promotion to Senior PM.
+    # Sample evaluation data
+    evaluation_request = {
+        "candidate_info": {
+            "name": "Test Candidate",
+            "current_level": "L5 PM",
+            "target_level": "L6 Senior PM",
+            "years_experience": 3,
+            "level_expectations": "Expected to demonstrate strategic thinking beyond immediate roadmap, influence across teams, and execution at scale."
+        },
+        "rubric": """## Strategic Thinking
+- Demonstrates long-term vision beyond immediate roadmap
+- Makes decisions considering broader organizational impact
 
-**Critical Criteria:**
-- Strategic thinking: Can they define product vision and influence direction?
-- Stakeholder management: Do they proactively align executives?
+## Leadership & Influence
+- Influences without authority across teams
+- Builds consensus among stakeholders
 
-**Important:**
-- Execution: Track record of delivering complex initiatives
-- Leadership: Mentoring and elevating team
-"""
+## Execution Excellence
+- Delivers complex projects on time
+- Manages risks proactively""",
+        "transcript": """Interviewer: Can you walk me through a recent project where you had to influence stakeholders?
 
-transcript = """
-Interviewer: Tell me about a time you influenced product strategy.
+Candidate: Sure, I recently led the launch of our new analytics dashboard. The challenge was getting buy-in from multiple teams who each had different priorities and timelines.
 
-Candidate: At my last company, I noticed our mobile app had poor retention. I analyzed user data and found that 60% of users churned after day 3. I proposed a complete onboarding redesign focused on time-to-value.
+I started by understanding each team's concerns individually. The engineering team was worried about technical debt, while the sales team needed quick wins for customer demos. Product wanted comprehensive features.
 
-I brought together engineering, design, and data science to create a cross-functional team. We ran experiments and reduced time-to-first-value from 5 days to 1 day. This increased D30 retention from 25% to 45%.
+I created a phased approach that addressed each concern. Phase 1 focused on core functionality that sales could demo. Phase 2 tackled the technical architecture improvements engineering wanted. Phase 3 added the advanced features product requested.
 
-Interviewer: How did you get buy-in from leadership?
+By showing how everyone's needs fit into the roadmap, I got all teams aligned. We launched on time, sales hit their demo targets, and engineering was happy with the clean architecture."""
+    }
 
-Candidate: I created a one-pager showing the revenue impact - $2M ARR if we improved retention by 10 points. The CEO was skeptical, so I ran a small pilot with 5% of users first. When we saw positive results, I got approval for full rollout.
-"""
+    try:
+        # Submit evaluation
+        print("\n1. Submitting evaluation request...")
+        print(f"   Candidate: {evaluation_request['candidate_info']['name']}")
 
-# Create initial state
-initial_state = create_initial_state(
-    rubric=rubric,
-    transcript=transcript,
-    candidate_info=candidate_info
-)
+        response = requests.post(
+            "http://localhost:8000/api/v1/evaluations",
+            json=evaluation_request,
+            timeout=10
+        )
 
-print("Starting evaluation test...")
-print("=" * 60)
+        if response.status_code != 202:
+            print(f"[ERROR] Failed to create evaluation: {response.status_code}")
+            print(f"Response: {response.text}")
+            return False
 
-try:
-    result = None
-    for chunk in evaluation_graph.stream(initial_state, stream_mode="updates"):
-        for node_name, node_output in chunk.items():
-            print(f"\n[{node_name.upper()}]")
+        data = response.json()
+        evaluation_id = data['evaluation_id']
+        print(f"   [OK] Evaluation created: {evaluation_id}")
 
-            if "primary_evaluation" in node_output:
-                print(f"Primary evaluation: {len(node_output['primary_evaluation'])} chars")
-            elif "challenges" in node_output:
-                print(f"Challenges: {len(node_output['challenges'])} chars")
-            elif "final_evaluation" in node_output:
-                print(f"Final evaluation: {len(node_output['final_evaluation'])} chars")
-            elif "decision" in node_output:
-                print(f"Decision: {len(node_output['decision'])} chars")
-                result = {**initial_state, **node_output}
+        # Poll for results
+        print("\n2. Waiting for agents to complete (may take 2-3 minutes)...")
 
-    if result and result.get('decision'):
-        print("\n" + "=" * 60)
-        print("EVALUATION COMPLETED SUCCESSFULLY!")
+        max_attempts = 60
+        attempt = 0
+
+        while attempt < max_attempts:
+            time.sleep(5)
+            attempt += 1
+
+            response = requests.get(
+                f"http://localhost:8000/api/v1/evaluations/{evaluation_id}",
+                timeout=10
+            )
+
+            result = response.json()
+            status = result['status']
+            progress = result['progress_percentage']
+
+            print(f"   [{attempt*5}s] Status: {status}, Progress: {progress}%", end='\r')
+
+            if status == 'completed':
+                print(f"\n   [OK] Completed in ~{attempt*5} seconds!")
+                break
+            elif status == 'failed':
+                print(f"\n   [ERROR] Failed: {result.get('error')}")
+                return False
+
+        if status != 'completed':
+            print(f"\n   [TIMEOUT] Did not complete in {max_attempts*5}s")
+            return False
+
+        # Check results
+        print("\n3. Checking Agent Outputs:")
         print("=" * 60)
-        print(f"\nTokens used: {result['metadata']['tokens'].get('total', 'N/A')}")
-        print(f"Cost: ${result['metadata'].get('cost_usd', 'N/A')}")
-        print(f"Execution time: {result['metadata'].get('execution_time_seconds', 'N/A')}s")
-        print("\n--- DECISION ---")
-        print(result['decision'][:500] + "..." if len(result['decision']) > 500 else result['decision'])
-    else:
-        print("\nERROR: Evaluation did not complete - no decision received")
 
-except Exception as e:
-    print(f"\nERROR: {str(e)}")
-    import traceback
-    traceback.print_exc()
+        eval_result = result.get('result')
+        agents = [
+            ('primary_evaluation', 'Primary Evaluator'),
+            ('challenges', 'Challenge Agent'),
+            ('final_evaluation', 'Calibrated Response'),
+            ('decision', 'Decision Agent')
+        ]
+
+        all_ok = True
+        for key, name in agents:
+            output = eval_result.get(key)
+            if output and len(output) > 50:
+                print(f"   [OK] {name}: {len(output)} chars")
+            else:
+                print(f"   [ERROR] {name}: MISSING or too short!")
+                all_ok = False
+
+        metadata = eval_result.get('metadata', {})
+        tokens = metadata.get('tokens', {})
+        total = tokens.get('total_input', 0) + tokens.get('total_output', 0)
+        print(f"\n   Total Tokens: {total}")
+        print(f"   Time: {metadata.get('execution_time_seconds', 0):.1f}s")
+        print(f"   Model: {metadata.get('model_version')}")
+
+        print("\n" + "=" * 60)
+        if all_ok:
+            print("[SUCCESS] All agents working!")
+        else:
+            print("[FAILED] Some agents failed")
+        print("=" * 60)
+        return all_ok
+
+    except Exception as e:
+        print(f"[ERROR] {e}")
+        return False
+
+if __name__ == "__main__":
+    import sys
+    success = test_evaluation()
+    sys.exit(0 if success else 1)

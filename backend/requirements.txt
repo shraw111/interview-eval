@@ -1,0 +1,10 @@
+# Backend-specific dependencies (FastAPI)
+# Note: Run 'pip install -r ../requirements.txt' first to get the base dependencies
+
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.6
+pydantic-settings>=2.1.0
+
+# All other dependencies (langchain, langgraph, openai, etc.)
+# are inherited from the root requirements.txt

@@ -122,7 +122,7 @@ with tab1:
 
                             # Update progress based on node
                             if node_name == "primary_evaluator":
-                                progress_bar.progress(25, text="Primary evaluation complete (1/4)")
+                                progress_bar.progress(33, text="Primary evaluation complete (1/3)")
 
                                 # Show token stats
                                 metadata = node_output.get("metadata", {})
@@ -134,7 +134,7 @@ with tab1:
                                     st.markdown(node_output.get("primary_evaluation", ""))
 
                             elif node_name == "challenge_agent":
-                                progress_bar.progress(50, text="Challenge review complete (2/4)")
+                                progress_bar.progress(67, text="Challenge review complete (2/3)")
 
                                 # Show token stats
                                 metadata = node_output.get("metadata", {})
@@ -145,20 +145,8 @@ with tab1:
                                 with st.expander("Challenges Raised", expanded=False):
                                     st.markdown(node_output.get("challenges", ""))
 
-                            elif node_name == "primary_response":
-                                progress_bar.progress(75, text="Calibrated evaluation complete (3/4)")
-
-                                # Show token stats
-                                metadata = node_output.get("metadata", {})
-                                tokens = metadata.get("tokens", {})
-                                with log_container:
-                                    st.success(f"✓ Response Agent: {tokens.get('response_input', 0):,} input tokens → {tokens.get('response_output', 0):,} output tokens")
-
-                                with st.expander("Calibrated Evaluation", expanded=False):
-                                    st.markdown(node_output.get("final_evaluation", ""))
-
                             elif node_name == "decision_agent":
-                                progress_bar.progress(100, text="Final decision made! (4/4)")
+                                progress_bar.progress(100, text="Final decision made! (3/3)")
 
                                 # Show token stats
                                 metadata = node_output.get("metadata", {})

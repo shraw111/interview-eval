@@ -38,8 +38,11 @@ def get_azure_openai_client() -> AzureOpenAI:
     Returns:
         Configured Azure OpenAI client instance
     """
+    # Support both naming conventions
+    api_key = os.getenv("AZURE_OPENAI_API_KEY") or os.getenv("AZURE_OPENAI_KEY")
+
     return AzureOpenAI(
-        api_key=os.getenv("AZURE_OPENAI_KEY"),
+        api_key=api_key,
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
         api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
         timeout=600.0  # 10 minute timeout for long transcripts
@@ -70,7 +73,8 @@ def call_anthropic_claude(
         Exception: If API call fails after all retries
     """
     client = get_azure_openai_client()
-    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT")
+    # Support both naming conventions
+    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME") or os.getenv("AZURE_OPENAI_DEPLOYMENT")
 
     max_retries = config["retry"]["max_attempts"]
     backoff = config["retry"]["backoff_factor"]

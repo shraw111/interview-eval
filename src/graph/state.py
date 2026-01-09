@@ -21,10 +21,10 @@ class TokenMetadata(TypedDict):
     primary_output: int
     challenge_input: int
     challenge_output: int
-    final_input: int
-    final_output: int
-    decision_input: int  # NEW - for decision agent
-    decision_output: int  # NEW - for decision agent
+    decision_input: int
+    decision_output: int
+    total_input: int
+    total_output: int
     total: int
 
 
@@ -33,8 +33,7 @@ class TimestampMetadata(TypedDict):
     start: str
     primary: str
     challenge: str
-    final: str
-    decision: str  # NEW - for decision agent
+    decision: str
 
 
 class EvaluationMetadata(TypedDict):
@@ -92,18 +91,17 @@ def create_initial_state(
                 primary_output=0,
                 challenge_input=0,
                 challenge_output=0,
-                final_input=0,
-                final_output=0,
-                decision_input=0,  # NEW
-                decision_output=0,  # NEW
+                decision_input=0,
+                decision_output=0,
+                total_input=0,
+                total_output=0,
                 total=0
             ),
             timestamps=TimestampMetadata(
                 start=datetime.now().isoformat(),
                 primary="",
                 challenge="",
-                final="",
-                decision=""  # NEW
+                decision=""
             ),
             model_version="",
             cost_usd=0.0,
