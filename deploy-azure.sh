@@ -6,29 +6,57 @@
 set -e  # Exit on error
 
 # ============================================================================
-# CONFIGURATION - EDIT THESE VALUES
+# LOAD CONFIGURATION
 # ============================================================================
 
-# Resource configuration
-RESOURCE_GROUP="interview-eval-rg"
-LOCATION="eastus"  # Change to your preferred region
-BACKEND_APP_NAME="interview-eval-backend"  # Must be globally unique
-FRONTEND_APP_NAME="interview-eval-frontend"  # Must be globally unique
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CONFIG_FILE="$SCRIPT_DIR/deploy-config.sh"
 
-# Your Azure OpenAI credentials (REQUIRED - fill these in)
-# Find these in Azure Portal -> Your OpenAI resource -> Keys and Endpoint
-AZURE_OPENAI_ENDPOINT="https://your-resource.openai.azure.com/"
-AZURE_OPENAI_API_KEY="your-azure-openai-key-here"
-AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4o"  # Your deployment name (e.g., gpt-4o, gpt-4, gpt-35-turbo)
-AZURE_OPENAI_API_VERSION="2024-08-01-preview"
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "❌ ERROR: Configuration file not found!"
+    echo ""
+    echo "Please create your configuration file:"
+    echo "1. Copy: deploy-config.example.sh"
+    echo "2. To:   deploy-config.sh"
+    echo "3. Edit deploy-config.sh and fill in your Azure OpenAI credentials"
+    echo ""
+    echo "The deploy-config.sh file is gitignored and safe from being committed."
+    exit 1
+fi
 
-# GitHub repository
-GITHUB_REPO="shraw111/interview-eval"
-GITHUB_BRANCH="main"
+echo "Loading configuration from: $CONFIG_FILE"
+source "$CONFIG_FILE"
 
-# Pricing tiers
-BACKEND_SKU="B1"  # B1=Basic ($13/mo) with Always On + unlimited storage. Use "F1" for free tier (60 min/day limit)
-FRONTEND_SKU="Free"
+# Validate required variables
+required_vars=(
+    "RESOURCE_GROUP"
+    "LOCATION"
+    "BACKEND_APP_NAME"
+    "FRONTEND_APP_NAME"
+    "AZURE_OPENAI_ENDPOINT"
+    "AZURE_OPENAI_API_KEY"
+    "AZURE_OPENAI_DEPLOYMENT_NAME"
+    "GITHUB_REPO"
+    "GITHUB_BRANCH"
+    "BACKEND_SKU"
+)
+
+missing_vars=()
+for var in "${required_vars[@]}"; do
+    if [ -z "${!var}" ]; then
+        missing_vars+=("$var")
+    fi
+done
+
+if [ ${#missing_vars[@]} -gt 0 ]; then
+    echo "❌ ERROR: Missing required configuration variables:"
+    for var in "${missing_vars[@]}"; do
+        echo "   - $var"
+    done
+    echo ""
+    echo "Please edit deploy-config.sh and fill in all required values."
+    exit 1
+fi
 
 # ============================================================================
 # DEPLOYMENT SCRIPT - DO NOT EDIT BELOW THIS LINE

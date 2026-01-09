@@ -3,6 +3,10 @@
 .env.local
 .env.*.local
 
+# Deployment configuration (contains secrets)
+deploy-config.ps1
+deploy-config.sh
+
 # Claude files
 .claude/
 /tmp/claude/

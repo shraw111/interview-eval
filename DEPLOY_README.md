@@ -14,32 +14,47 @@ Two deployment scripts are provided - use whichever you prefer:
 
 3. **Azure subscription** (free tier works!)
 
-## Step 1: Get Your Azure OpenAI Details
+## Step 1: Create Your Local Configuration File
 
-Go to **Azure Portal** → Your **OpenAI resource** → **Keys and Endpoint**:
-- Copy the **Endpoint** (e.g., `https://your-resource.openai.azure.com/`)
-- Copy **Key 1** or **Key 2**
-- Note your **Deployment name** (e.g., `gpt-4o`, `gpt-4`, `gpt-35-turbo`)
+**IMPORTANT: Never commit credentials to Git!**
 
-## Step 2: Edit Configuration
+### PowerShell (Windows):
+```powershell
+cd "C:\Users\shirawat1\Downloads\Interview Agent"
+Copy-Item deploy-config.example.ps1 deploy-config.ps1
+notepad deploy-config.ps1
+```
 
-Open `deploy-azure.ps1` (or `.sh`) and fill in these values at the top:
+### Bash (Linux/Mac/WSL):
+```bash
+cd "/c/Users/shirawat1/Downloads/Interview Agent"
+cp deploy-config.example.sh deploy-config.sh
+nano deploy-config.sh  # or vim, code, etc.
+```
+
+## Step 2: Fill in Your Azure OpenAI Credentials
+
+Get your credentials from **Azure Portal** → Your **OpenAI resource** → **Keys and Endpoint**
+
+Edit `deploy-config.ps1` (or `.sh`) and fill in:
 
 ```powershell
 # REQUIRED - Fill these in:
 $AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
-$AZURE_OPENAI_API_KEY = "your-azure-key-here"
-$AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4o"
+$AZURE_OPENAI_API_KEY = "paste-your-actual-key-here"
+$AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4o"  # Your deployment name
 ```
 
-**Note:** You do NOT need an Anthropic API key - the system uses Azure OpenAI only.
-
-**Optional - Customize names:**
+**Optional - Customize names if needed:**
 ```powershell
-$BACKEND_APP_NAME = "interview-eval-backend"  # Change if name taken
-$FRONTEND_APP_NAME = "interview-eval-frontend"  # Change if name taken
+$BACKEND_APP_NAME = "interview-eval-backend-yourname"  # Must be globally unique
+$FRONTEND_APP_NAME = "interview-eval-frontend-yourname"  # Must be globally unique
 $LOCATION = "eastus"  # Or "westus", "centralus", etc.
 ```
+
+**✅ SAFE:** The `deploy-config.ps1` / `deploy-config.sh` file is **gitignored** and will never be committed to GitHub.
+
+**Note:** You do NOT need an Anthropic API key - the system uses Azure OpenAI only.
 
 ## Step 3: Run the Script
 

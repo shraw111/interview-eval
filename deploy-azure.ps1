@@ -4,29 +4,54 @@
 $ErrorActionPreference = "Stop"
 
 # ============================================================================
-# CONFIGURATION - EDIT THESE VALUES
+# LOAD CONFIGURATION
 # ============================================================================
 
-# Resource configuration
-$RESOURCE_GROUP = "interview-eval-rg"
-$LOCATION = "eastus"  # Change to your preferred region
-$BACKEND_APP_NAME = "interview-eval-backend"  # Must be globally unique
-$FRONTEND_APP_NAME = "interview-eval-frontend"  # Must be globally unique
+$configFile = Join-Path $PSScriptRoot "deploy-config.ps1"
 
-# Your Azure OpenAI credentials (REQUIRED - fill these in)
-# Find these in Azure Portal -> Your OpenAI resource -> Keys and Endpoint
-$AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
-$AZURE_OPENAI_API_KEY = "your-azure-openai-key-here"
-$AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4o"  # Your deployment name (e.g., gpt-4o, gpt-4, gpt-35-turbo)
-$AZURE_OPENAI_API_VERSION = "2024-08-01-preview"
+if (-not (Test-Path $configFile)) {
+    Write-Host "❌ ERROR: Configuration file not found!" -ForegroundColor Red
+    Write-Host ""
+    Write-Host "Please create your configuration file:"
+    Write-Host "1. Copy: deploy-config.example.ps1"
+    Write-Host "2. To:   deploy-config.ps1"
+    Write-Host "3. Edit deploy-config.ps1 and fill in your Azure OpenAI credentials"
+    Write-Host ""
+    Write-Host "The deploy-config.ps1 file is gitignored and safe from being committed."
+    exit 1
+}
 
-# GitHub repository
-$GITHUB_REPO = "shraw111/interview-eval"
-$GITHUB_BRANCH = "main"
+Write-Host "Loading configuration from: $configFile" -ForegroundColor Cyan
+. $configFile
 
-# Pricing tiers
-$BACKEND_SKU = "B1"  # B1=Basic ($13/mo) with Always On + unlimited storage. Use "F1" for free tier (60 min/day limit)
-$FRONTEND_SKU = "Free"
+# Validate required variables
+$requiredVars = @(
+    "RESOURCE_GROUP",
+    "LOCATION",
+    "BACKEND_APP_NAME",
+    "FRONTEND_APP_NAME",
+    "AZURE_OPENAI_ENDPOINT",
+    "AZURE_OPENAI_API_KEY",
+    "AZURE_OPENAI_DEPLOYMENT_NAME",
+    "GITHUB_REPO",
+    "GITHUB_BRANCH",
+    "BACKEND_SKU"
+)
+
+$missingVars = @()
+foreach ($var in $requiredVars) {
+    if (-not (Get-Variable -Name $var -ErrorAction SilentlyContinue) -or -not (Get-Variable -Name $var).Value) {
+        $missingVars += $var
+    }
+}
+
+if ($missingVars.Count -gt 0) {
+    Write-Host "❌ ERROR: Missing required configuration variables:" -ForegroundColor Red
+    $missingVars | ForEach-Object { Write-Host "   - $_" }
+    Write-Host ""
+    Write-Host "Please edit deploy-config.ps1 and fill in all required values."
+    exit 1
+}
 
 # ============================================================================
 # DEPLOYMENT SCRIPT - DO NOT EDIT BELOW THIS LINE
