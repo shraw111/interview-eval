@@ -13,11 +13,11 @@ $LOCATION = "eastus"  # Change to your preferred region
 $BACKEND_APP_NAME = "interview-eval-backend"  # Must be globally unique
 $FRONTEND_APP_NAME = "interview-eval-frontend"  # Must be globally unique
 
-# Your credentials (REQUIRED - fill these in)
-$ANTHROPIC_API_KEY = "your-anthropic-api-key-here"
-$AZURE_OPENAI_ENDPOINT = "your-azure-openai-endpoint-here"
+# Your Azure OpenAI credentials (REQUIRED - fill these in)
+# Find these in Azure Portal -> Your OpenAI resource -> Keys and Endpoint
+$AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
 $AZURE_OPENAI_API_KEY = "your-azure-openai-key-here"
-$AZURE_OPENAI_DEPLOYMENT_NAME = "your-deployment-name-here"
+$AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4o"  # Your deployment name (e.g., gpt-4o, gpt-4, gpt-35-turbo)
 $AZURE_OPENAI_API_VERSION = "2024-08-01-preview"
 
 # GitHub repository
@@ -41,14 +41,34 @@ Write-Host ""
 Write-Host "Checking Azure login status..."
 try {
     $account = az account show 2>$null | ConvertFrom-Json
-    $subscriptionId = $account.id
-    Write-Host "✅ Using subscription: $subscriptionId" -ForegroundColor Green
+    Write-Host "✅ Already logged in to Azure" -ForegroundColor Green
 } catch {
-    Write-Host "❌ Not logged in to Azure. Running 'az login'..." -ForegroundColor Red
+    Write-Host "❌ Not logged in to Azure. Opening browser for login..." -ForegroundColor Yellow
     az login
-    $account = az account show | ConvertFrom-Json
-    $subscriptionId = $account.id
 }
+
+# List subscriptions and let user choose
+Write-Host ""
+Write-Host "Available Azure Subscriptions:"
+Write-Host "=============================="
+$subscriptions = az account list | ConvertFrom-Json
+$subscriptions | ForEach-Object { $i = 0 } {
+    Write-Host "[$i] $($_.name) (ID: $($_.id))"
+    $i++
+}
+
+Write-Host ""
+$selection = Read-Host "Select subscription number (press Enter for default)"
+
+if ($selection -match '^\d+$') {
+    $selectedSub = $subscriptions[$selection]
+    Write-Host "Setting subscription to: $($selectedSub.name)" -ForegroundColor Cyan
+    az account set --subscription $selectedSub.id
+}
+
+$currentAccount = az account show | ConvertFrom-Json
+Write-Host "✅ Using subscription: $($currentAccount.name)" -ForegroundColor Green
+Write-Host "   Subscription ID: $($currentAccount.id)"
 Write-Host ""
 
 # Create resource group
@@ -124,7 +144,6 @@ az webapp config appsettings set `
   --name $BACKEND_APP_NAME `
   --resource-group $RESOURCE_GROUP `
   --settings `
-    ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" `
     AZURE_OPENAI_ENDPOINT="$AZURE_OPENAI_ENDPOINT" `
     AZURE_OPENAI_API_KEY="$AZURE_OPENAI_API_KEY" `
     AZURE_OPENAI_DEPLOYMENT_NAME="$AZURE_OPENAI_DEPLOYMENT_NAME" `

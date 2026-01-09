@@ -15,11 +15,11 @@ LOCATION="eastus"  # Change to your preferred region
 BACKEND_APP_NAME="interview-eval-backend"  # Must be globally unique
 FRONTEND_APP_NAME="interview-eval-frontend"  # Must be globally unique
 
-# Your credentials (REQUIRED - fill these in)
-ANTHROPIC_API_KEY="your-anthropic-api-key-here"
-AZURE_OPENAI_ENDPOINT="your-azure-openai-endpoint-here"
+# Your Azure OpenAI credentials (REQUIRED - fill these in)
+# Find these in Azure Portal -> Your OpenAI resource -> Keys and Endpoint
+AZURE_OPENAI_ENDPOINT="https://your-resource.openai.azure.com/"
 AZURE_OPENAI_API_KEY="your-azure-openai-key-here"
-AZURE_OPENAI_DEPLOYMENT_NAME="your-deployment-name-here"
+AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4o"  # Your deployment name (e.g., gpt-4o, gpt-4, gpt-35-turbo)
 AZURE_OPENAI_API_VERSION="2024-08-01-preview"
 
 # GitHub repository
@@ -41,13 +41,31 @@ echo ""
 
 # Check if logged in to Azure
 echo "Checking Azure login status..."
-az account show > /dev/null 2>&1 || {
-    echo "❌ Not logged in to Azure. Running 'az login'..."
+if az account show > /dev/null 2>&1; then
+    echo "✅ Already logged in to Azure"
+else
+    echo "❌ Not logged in to Azure. Opening browser for login..."
     az login
-}
+fi
 
+# List subscriptions and let user choose
+echo ""
+echo "Available Azure Subscriptions:"
+echo "=============================="
+az account list --query "[].{Index:name, ID:id}" -o table
+
+echo ""
+read -p "Enter subscription ID (press Enter for default): " SUB_ID
+
+if [ ! -z "$SUB_ID" ]; then
+    echo "Setting subscription to: $SUB_ID"
+    az account set --subscription "$SUB_ID"
+fi
+
+CURRENT_SUB=$(az account show --query name -o tsv)
 SUBSCRIPTION_ID=$(az account show --query id -o tsv)
-echo "✅ Using subscription: $SUBSCRIPTION_ID"
+echo "✅ Using subscription: $CURRENT_SUB"
+echo "   Subscription ID: $SUBSCRIPTION_ID"
 echo ""
 
 # Create resource group
@@ -123,7 +141,6 @@ az webapp config appsettings set \
   --name "$BACKEND_APP_NAME" \
   --resource-group "$RESOURCE_GROUP" \
   --settings \
-    ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
     AZURE_OPENAI_ENDPOINT="$AZURE_OPENAI_ENDPOINT" \
     AZURE_OPENAI_API_KEY="$AZURE_OPENAI_API_KEY" \
     AZURE_OPENAI_DEPLOYMENT_NAME="$AZURE_OPENAI_DEPLOYMENT_NAME" \

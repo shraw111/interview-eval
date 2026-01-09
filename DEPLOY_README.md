@@ -14,17 +14,25 @@ Two deployment scripts are provided - use whichever you prefer:
 
 3. **Azure subscription** (free tier works!)
 
-## Step 1: Edit Configuration
+## Step 1: Get Your Azure OpenAI Details
 
-Open `deploy-azure.ps1` (or `.sh`) and fill in your credentials at the top:
+Go to **Azure Portal** → Your **OpenAI resource** → **Keys and Endpoint**:
+- Copy the **Endpoint** (e.g., `https://your-resource.openai.azure.com/`)
+- Copy **Key 1** or **Key 2**
+- Note your **Deployment name** (e.g., `gpt-4o`, `gpt-4`, `gpt-35-turbo`)
+
+## Step 2: Edit Configuration
+
+Open `deploy-azure.ps1` (or `.sh`) and fill in these values at the top:
 
 ```powershell
 # REQUIRED - Fill these in:
-$ANTHROPIC_API_KEY = "sk-ant-..."
 $AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
 $AZURE_OPENAI_API_KEY = "your-azure-key-here"
 $AZURE_OPENAI_DEPLOYMENT_NAME = "gpt-4o"
 ```
+
+**Note:** You do NOT need an Anthropic API key - the system uses Azure OpenAI only.
 
 **Optional - Customize names:**
 ```powershell
@@ -33,7 +41,12 @@ $FRONTEND_APP_NAME = "interview-eval-frontend"  # Change if name taken
 $LOCATION = "eastus"  # Or "westus", "centralus", etc.
 ```
 
-## Step 2: Run the Script
+## Step 3: Run the Script
+
+The script will:
+1. Log you into Azure (opens browser)
+2. Show all your subscriptions - choose one or press Enter for default
+3. Create all resources automatically
 
 ### PowerShell (Windows):
 ```powershell
