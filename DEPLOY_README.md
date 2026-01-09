@@ -106,8 +106,9 @@ Check GitHub Actions: https://github.com/shraw111/interview-eval/actions
 
 ## Cost
 
-- **Free tier**: $0/month (Backend F1 has 60 min/day limit)
-- **Production**: Change `$BACKEND_SKU = "B1"` for $13/month (Always On, no limits)
+- **Default (B1)**: $13/month - Always On, unlimited compute, no daily limits
+- **Free tier option**: Change `$BACKEND_SKU = "F1"` for $0/month (60 min/day limit, no Always On)
+- **Frontend**: Always free ($0/month)
 
 ## Manual Cleanup
 

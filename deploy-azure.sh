@@ -27,7 +27,7 @@ GITHUB_REPO="shraw111/interview-eval"
 GITHUB_BRANCH="main"
 
 # Pricing tiers
-BACKEND_SKU="F1"  # F1=Free, B1=Basic ($13/mo with Always On)
+BACKEND_SKU="B1"  # B1=Basic ($13/mo) with Always On + unlimited storage. Use "F1" for free tier (60 min/day limit)
 FRONTEND_SKU="Free"
 
 # ============================================================================
@@ -258,8 +258,8 @@ echo "   Backend:  az webapp log tail --name $BACKEND_APP_NAME --resource-group 
 echo "   Frontend: Check GitHub Actions at https://github.com/$GITHUB_REPO/actions"
 echo ""
 echo "💰 Cost estimate:"
-echo "   - Backend (F1):  $0/month (60 min/day limit)"
-echo "   - Frontend:      $0/month (Free tier)"
-echo "   - Total:         $0/month"
+echo "   - Backend (B1):  \$13/month (Always On, unlimited)"
+echo "   - Frontend:      \$0/month (Free tier)"
+echo "   - Total:         ~\$13/month"
 echo ""
 echo "📚 For troubleshooting, see: AZURE_DEPLOYMENT.md"
