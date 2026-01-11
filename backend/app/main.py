@@ -28,13 +28,15 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Configure CORS for local development
+# Configure CORS for local development and Azure
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # Next.js dev server
         "http://localhost:3001",
         "http://127.0.0.1:3000",
+        "https://wonderful-grass-0a765e90f.1.azurestaticapps.net",  # Azure frontend
+        os.getenv("FRONTEND_URL", ""),  # Allow runtime configuration
     ],
     allow_credentials=True,
     allow_methods=["*"],
