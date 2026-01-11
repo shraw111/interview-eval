@@ -118,8 +118,8 @@ export function ProgressTracker({
                 y2="20%"
                 stroke="url(#gradient1)"
                 strokeWidth="2"
-                strokeDasharray={agentStates.primary_evaluator === "completed" ? "0" : "5,5"}
-                className={agentStates.primary_evaluator === "completed" ? "opacity-100" : "opacity-30"}
+                strokeDasharray={agentStates.primary_evaluator.status === "completed" ? "0" : "5,5"}
+                className={agentStates.primary_evaluator.status === "completed" ? "opacity-100" : "opacity-30"}
               />
               {/* Connection 2 → 3 */}
               <line
@@ -129,8 +129,8 @@ export function ProgressTracker({
                 y2="50%"
                 stroke="url(#gradient2)"
                 strokeWidth="2"
-                strokeDasharray={agentStates.challenge_agent === "completed" ? "0" : "5,5"}
-                className={agentStates.challenge_agent === "completed" ? "opacity-100" : "opacity-30"}
+                strokeDasharray={agentStates.challenge_agent.status === "completed" ? "0" : "5,5"}
+                className={agentStates.challenge_agent.status === "completed" ? "opacity-100" : "opacity-30"}
               />
               {/* Gradient definitions */}
               <defs>
