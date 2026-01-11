@@ -10,20 +10,28 @@ echo "AZURE_OPENAI_ENDPOINT: ${AZURE_OPENAI_ENDPOINT:+[SET]}"
 echo "AZURE_OPENAI_API_KEY: ${AZURE_OPENAI_API_KEY:+[SET]}"
 echo "AZURE_OPENAI_DEPLOYMENT_NAME: ${AZURE_OPENAI_DEPLOYMENT_NAME:+[SET]}"
 
-# Navigate to backend
-cd /home/site/wwwroot/backend
+# Get the project root (current directory where Azure extracts)
+PROJECT_ROOT=$(pwd)
+echo "Project root: $PROJECT_ROOT"
 
 # Verify critical files exist
 echo "Checking critical files..."
-ls -la ../config.yaml 2>/dev/null && echo "config.yaml: OK" || echo "config.yaml: MISSING"
-ls -la ../src/graph/graph.py 2>/dev/null && echo "graph.py: OK" || echo "graph.py: MISSING"
+ls -la "$PROJECT_ROOT/config.yaml" 2>/dev/null && echo "config.yaml: OK" || echo "config.yaml: MISSING"
+ls -la "$PROJECT_ROOT/src/graph/graph.py" 2>/dev/null && echo "graph.py: OK" || echo "graph.py: MISSING"
+ls -la "$PROJECT_ROOT/backend/app/main.py" 2>/dev/null && echo "main.py: OK" || echo "main.py: MISSING"
 
-# Set Python path to include project root
-export PYTHONPATH="/home/site/wwwroot:$PYTHONPATH"
+# List directory structure for debugging
+echo "Directory structure:"
+ls -la "$PROJECT_ROOT"
+
+# Set Python path to include project root so 'backend.wsgi' can be imported
+export PYTHONPATH="$PROJECT_ROOT:$PYTHONPATH"
+echo "PYTHONPATH: $PYTHONPATH"
 
 # Start gunicorn with reduced workers for B1 tier
+# Use backend.wsgi:application as the entry point
 echo "Starting gunicorn..."
-gunicorn -w 2 -k uvicorn.workers.UvicornWorker app.main:app \
+gunicorn -w 2 -k uvicorn.workers.UvicornWorker backend.wsgi:application \
     --bind 0.0.0.0:8000 \
     --timeout 300 \
     --access-logfile - \
