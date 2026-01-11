@@ -2,14 +2,18 @@
 import sys
 import os
 
+# Get the directory where wsgi.py is located (backend/)
+backend_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Get project root (parent of backend/)
+project_root = os.path.dirname(backend_dir)
+
 # Add project root to Python path
-# backend/wsgi.py -> backend/ -> project root
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-# Change to backend directory for relative imports
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+# Change working directory to backend/
+os.chdir(backend_dir)
 
 # Import the FastAPI app
 from app.main import app
