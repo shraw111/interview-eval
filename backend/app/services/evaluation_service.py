@@ -10,6 +10,7 @@ from ..models.requests import CreateEvaluationRequest
 from ..models.responses import EvaluationResponse, EvaluationListItem
 from ..utils.graph_executor import GraphExecutor
 from .storage_service import storage
+from ..constants.rubric import EVALUATION_RUBRIC_JSON
 
 
 class EvaluationService:
@@ -54,7 +55,7 @@ class EvaluationService:
             "created_at": datetime.now().isoformat(),
             "input": {
                 "candidate_info": request.candidate_info.model_dump(),
-                "rubric": request.rubric,
+                "rubric": EVALUATION_RUBRIC_JSON,  # Use hardcoded rubric
                 "transcript": request.transcript
             },
             "result": None,
@@ -103,7 +104,7 @@ class EvaluationService:
             start_time = datetime.now()
             final_state = await executor.execute_graph(
                 evaluation_id=evaluation_id,
-                rubric=request.rubric,
+                rubric=EVALUATION_RUBRIC_JSON,  # Use hardcoded rubric
                 transcript=request.transcript,
                 candidate_info=request.candidate_info.model_dump()
             )

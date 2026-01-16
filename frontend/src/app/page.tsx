@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { evaluationFormSchema, EvaluationFormData } from "@/lib/validation/schemas";
-import { DEFAULT_RUBRIC } from "@/lib/rubric-templates";
 import { FormWizard } from "@/components/evaluation/FormWizard";
 import { ProgressTracker } from "@/components/evaluation/ProgressTrackerClean";
 import { EvaluationResults } from "@/components/evaluation/EvaluationResultsNew";
@@ -32,7 +31,6 @@ export default function HomePage() {
         years_experience: undefined,
         level_expectations: undefined,
       },
-      rubric: DEFAULT_RUBRIC,
       transcript: "",
     },
   });

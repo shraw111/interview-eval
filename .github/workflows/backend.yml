@@ -1,0 +1,47 @@
+name: Backend CI/CD (Azure App Service)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Run tests
+        run: |
+          pytest -q
+
+      - name: 'Login to Azure'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy backend to Azure App Service (zip deploy)
+        env:
+          RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          APP_NAME: ${{ secrets.AZURE_BACKEND_APP }}
+        run: |
+          # Create a zip of the backend directory and deploy via az
+          cd backend
+          zip -r ../backend.zip .
+          cd ..
+          az webapp deploy --resource-group "$RESOURCE_GROUP" --name "$APP_NAME" --src-path "backend.zip" --type zip
+
+# Secrets required in repository:
+# - AZURE_CREDENTIALS: JSON output from `az ad sp create-for-rbac --sdk-auth` (for azure/login)
+# - AZURE_RESOURCE_GROUP: resource group name
+# - AZURE_BACKEND_APP: App Service name for the backend

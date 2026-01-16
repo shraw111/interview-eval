@@ -78,7 +78,6 @@ export function CandidateInfoForm({ form }: CandidateInfoFormProps) {
           placeholder="0"
           {...register("candidate_info.years_experience", {
             valueAsNumber: true,
-            setValueAs: (v) => v === "" ? undefined : Number(v),
           })}
         />
         {errors.candidate_info?.years_experience && (

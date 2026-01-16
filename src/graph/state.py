@@ -58,7 +58,8 @@ class EvaluationState(TypedDict):
     primary_evaluation: Optional[str]
     challenges: Optional[str]
     final_evaluation: Optional[str]
-    decision: Optional[str]  # NEW - Final promotion decision from decision agent
+    decision: Optional[str]  # Final promotion decision narrative from decision agent
+    decision_json: Optional[Dict[str, Any]]  # Structured JSON data from decision agent
 
     # Metadata
     metadata: EvaluationMetadata
@@ -84,7 +85,8 @@ def create_initial_state(
         primary_evaluation=None,
         challenges=None,
         final_evaluation=None,
-        decision=None,  # NEW - Initialize as None
+        decision=None,  # Initialize as None
+        decision_json=None,  # Initialize as None
         metadata=EvaluationMetadata(
             tokens=TokenMetadata(
                 primary_input=0,

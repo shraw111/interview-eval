@@ -4,65 +4,26 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EvaluationResult } from "@/types/evaluation";
 import { EvaluationJourney } from "./EvaluationJourney";
-import { CheckCircle, XCircle, AlertTriangle } from "lucide-react";
+import { ScoreComparisonTable } from "./ScoreComparisonTable";
+import { DetailedFeedback } from "./DetailedFeedback";
+import { AlertTriangle } from "lucide-react";
 
 interface EvaluationResultsProps {
   result: EvaluationResult;
 }
 
 export function EvaluationResults({ result }: EvaluationResultsProps) {
-  const { candidate_info, decision, metadata } = result;
+  const { candidate_info, decision, decision_json, metadata } = result;
 
-  // Extract recommendation from decision text
-  const getRecommendation = (): {
-    text: string;
-    variant: "default" | "secondary" | "destructive" | "outline";
-    icon: React.ReactNode;
-    gradient: string;
-  } => {
-    const lowerDecision = decision.toLowerCase();
-    if (lowerDecision.includes("strong recommend") || lowerDecision.includes("strongly recommend")) {
-      return {
-        text: "STRONG RECOMMEND",
-        variant: "default",
-        icon: <CheckCircle className="w-6 h-6" />,
-        gradient: "from-success to-success/80",
-      };
-    } else if (lowerDecision.includes("recommend") && !lowerDecision.includes("do not")) {
-      return {
-        text: "RECOMMEND",
-        variant: "default",
-        icon: <CheckCircle className="w-6 h-6" />,
-        gradient: "from-primary to-primary/80",
-      };
-    } else if (lowerDecision.includes("borderline") || lowerDecision.includes("on the fence")) {
-      return {
-        text: "BORDERLINE",
-        variant: "secondary",
-        icon: <AlertTriangle className="w-6 h-6" />,
-        gradient: "from-warning to-warning/80",
-      };
-    } else if (lowerDecision.includes("do not recommend") || lowerDecision.includes("not ready")) {
-      return {
-        text: "DO NOT RECOMMEND",
-        variant: "destructive",
-        icon: <XCircle className="w-6 h-6" />,
-        gradient: "from-destructive to-destructive/80",
-      };
-    }
-    return {
-      text: "REVIEW REQUIRED",
-      variant: "outline",
-      icon: <AlertTriangle className="w-6 h-6" />,
-      gradient: "from-muted to-muted/80",
-    };
-  };
-
-  const recommendation = getRecommendation();
+  // Debug logging
+  console.log("[EvaluationResults] decision_json:", decision_json);
+  console.log("[EvaluationResults] decision_json type:", typeof decision_json);
+  console.log("[EvaluationResults] comparison_rows:", decision_json?.comparison_rows);
+  console.log("[EvaluationResults] decision length:", decision?.length);
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
-      {/* Recommendation Card - Hero */}
+      {/* Candidate Info Card */}
       <Card className="shadow-card fade-in-delay-1">
         <CardContent className="pt-8 pb-8">
           <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
@@ -73,7 +34,6 @@ export function EvaluationResults({ result }: EvaluationResultsProps) {
                 <Badge variant="outline" className="text-xs">
                   {candidate_info.current_level}
                 </Badge>
-                <span className="text-muted-foreground">→</span>
                 <Badge variant="outline" className="text-xs">
                   {candidate_info.target_level}
                 </Badge>
@@ -81,19 +41,6 @@ export function EvaluationResults({ result }: EvaluationResultsProps) {
               <p className="text-sm text-muted-foreground">
                 {candidate_info.years_experience} years at current level
               </p>
-            </div>
-
-            {/* Recommendation Badge - Large */}
-            <div className="flex flex-col items-center gap-3">
-              <Badge
-                variant={recommendation.variant}
-                className="flex items-center gap-2 px-6 py-3 text-base"
-              >
-                {recommendation.icon}
-                <span className="font-semibold">
-                  {recommendation.text}
-                </span>
-              </Badge>
             </div>
           </div>
         </CardContent>
@@ -118,9 +65,33 @@ export function EvaluationResults({ result }: EvaluationResultsProps) {
         </CardContent>
       </Card>
 
+      {/* Score Comparison Table */}
+      {decision_json?.comparison_rows && decision_json.comparison_rows.length > 0 ? (
+        <div className="fade-in-delay-2">
+          <ScoreComparisonTable rows={decision_json.comparison_rows} />
+        </div>
+      ) : (
+        <Card className="bg-yellow-50 border-yellow-200">
+          <CardContent className="pt-6">
+            <p className="text-sm text-yellow-800">
+              Score comparison table not available. The decision agent may not have returned structured data.
+            </p>
+          </CardContent>
+        </Card>
+      )}
 
-      {/* Evaluation Journey */}
-      <div className="fade-in-delay-3">
+      {/* Detailed Feedback for Candidate */}
+      {decision && (
+        <div className="fade-in-delay-3">
+          <DetailedFeedback
+            decision={decision}
+            developmentPlan={decision_json?.development_plan}
+          />
+        </div>
+      )}
+
+      {/* Evaluation Journey - Technical Process Details */}
+      <div className="fade-in-delay-4">
         <EvaluationJourney result={result} />
       </div>
     </div>

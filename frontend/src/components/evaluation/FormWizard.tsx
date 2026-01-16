@@ -50,8 +50,8 @@ export function FormWizard({ form, onSubmit, isSubmitting }: FormWizardProps) {
         ];
         break;
       case 2:
-        fieldsToValidate = ["rubric"];
-        break;
+        // Rubric is hardcoded, no validation needed - just allow progression
+        return true;
       case 3:
         fieldsToValidate = ["transcript"];
         break;

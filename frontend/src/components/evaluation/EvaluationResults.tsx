@@ -15,31 +15,11 @@ interface EvaluationResultsProps {
 export function EvaluationResults({ result }: EvaluationResultsProps) {
   const { candidate_info, decision, metadata } = result;
 
-  // Extract recommendation from decision text
-  const getRecommendation = (): {
-    text: string;
-    variant: "success" | "warning" | "destructive" | "default";
-  } => {
-    const lowerDecision = decision.toLowerCase();
-    if (lowerDecision.includes("strong recommend") || lowerDecision.includes("strongly recommend")) {
-      return { text: "STRONG RECOMMEND", variant: "success" };
-    } else if (lowerDecision.includes("recommend") && !lowerDecision.includes("do not")) {
-      return { text: "RECOMMEND", variant: "success" };
-    } else if (lowerDecision.includes("borderline") || lowerDecision.includes("on the fence")) {
-      return { text: "BORDERLINE", variant: "warning" };
-    } else if (lowerDecision.includes("do not recommend") || lowerDecision.includes("not ready")) {
-      return { text: "DO NOT RECOMMEND", variant: "destructive" };
-    }
-    return { text: "REVIEW REQUIRED", variant: "default" };
-  };
-
-  const recommendation = getRecommendation();
-
   const totalTokens = metadata.tokens.total_input + metadata.tokens.total_output;
 
   return (
     <div className="space-y-6">
-      {/* Header with Recommendation */}
+      {/* Header */}
       <Card className="border-2">
         <CardHeader>
           <div className="flex items-start justify-between">
@@ -49,12 +29,6 @@ export function EvaluationResults({ result }: EvaluationResultsProps) {
                 {candidate_info.current_level} → {candidate_info.target_level}
               </p>
             </div>
-            <Badge
-              variant={recommendation.variant}
-              className="text-lg px-4 py-2"
-            >
-              {recommendation.text}
-            </Badge>
           </div>
         </CardHeader>
       </Card>

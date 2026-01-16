@@ -41,12 +41,34 @@ export interface EvaluationMetadata {
   model_version: string;
 }
 
+export interface ComparisonRow {
+  Criterion: string;
+  "Primary Score": number;
+  "Challenger Suggested": number;
+  Final: number;
+  Reason: string;
+}
+
+export interface DecisionJSON {
+  decision: string;
+  reasons: string[];
+  final_disposition: {
+    status: string;
+    overall_score: number;
+    confidence: string;
+  };
+  comparison_rows: ComparisonRow[];
+  development_plan: string[];
+  notes: string;
+}
+
 export interface EvaluationResult {
   candidate_info: CandidateInfo;
   primary_evaluation: string;
   challenges: string;
   final_evaluation: string;
   decision: string;
+  decision_json?: DecisionJSON;
   metadata: EvaluationMetadata;
 }
 

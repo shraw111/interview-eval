@@ -1,0 +1,42 @@
+name: Frontend CI/CD (Static Web Apps)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build
+        run: |
+          cd frontend
+          npm run build
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }} # required: create when provisioning the Static Web App
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # used by the action
+          action: "upload"
+          app_location: "frontend"
+          api_location: ""
+          output_location: ".next"
+
+# Notes:
+# - This workflow uses the official Static Web Apps deploy action which expects a secret
+#   `AZURE_STATIC_WEB_APPS_API_TOKEN` created when you connect the GitHub repo to the Static Web App.
+# - If you prefer to create the Static Web App from Azure CLI and deploy with `az`, see `CI_DEPLOY.md`.

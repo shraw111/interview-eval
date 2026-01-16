@@ -18,7 +18,6 @@ class CreateEvaluationRequest(BaseModel):
     """Request to create a new evaluation."""
 
     candidate_info: CandidateInfo = Field(..., description="Candidate information")
-    rubric: str = Field(..., min_length=50, description="Natural language evaluation criteria")
     transcript: str = Field(..., min_length=100, description="Interview transcript")
 
     class Config:
@@ -31,7 +30,6 @@ class CreateEvaluationRequest(BaseModel):
                     "years_experience": 3,
                     "level_expectations": "Expected to demonstrate strategic thinking, cross-team influence, and execution at scale."
                 },
-                "rubric": "## Strategic Thinking\n- Demonstrates long-term vision beyond immediate roadmap\n\n## Leadership\n- Evidence of influencing without authority",
                 "transcript": "[Detailed interview transcript content...]"
             }
         }

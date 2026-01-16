@@ -147,7 +147,7 @@ export function ProgressTracker({
 
             {/* Agent nodes */}
             {agents.map((agent) => {
-              const status = agentStates[agent.key];
+              const status = agentStates[agent.key].status;
               const Icon = agent.icon;
 
               return (

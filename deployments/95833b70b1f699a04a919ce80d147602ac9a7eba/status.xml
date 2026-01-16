@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<deployment>
+  <id>95833b70b1f699a04a919ce80d147602ac9a7eba</id>
+  <author>shraw</author>
+  <deployer>GitHub</deployer>
+  <authorEmail>s@s.com</authorEmail>
+  <message>fix: Configure Azure to build from backend subdirectory</message>
+  <progress></progress>
+  <status>Failed</status>
+  <statusText></statusText>
+  <lastSuccessEndTime />
+  <receivedTime>2026-01-10T14:43:49.2187972Z</receivedTime>
+  <startTime>2026-01-10T14:43:50.8038189Z</startTime>
+  <endTime>2026-01-10T14:43:59.9625882Z</endTime>
+  <complete>True</complete>
+  <is_temp>False</is_temp>
+  <is_readonly>False</is_readonly>
+  <buildSummary />
+</deployment>
